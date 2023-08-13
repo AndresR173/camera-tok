@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  CameraTok
+
+  Created by Andres Rojas on 13/08/23.
+  
+*/
+
+"onboarding.intro" = "Step into the Past, Relive the Present: Unveil Your Memories Through Time with CameraTok.";
+"onboarding.gallery" = "Unlock Your Memories: Grant Us Access to Your Gallery and Step into a World of Timeless Stories.";
+"onboarding.grant_access" = "Grant Access";

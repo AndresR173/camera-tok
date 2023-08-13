@@ -19,6 +19,20 @@
 		3470C9242A897BEE00BD1478 /* CameraTokAppViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE1902A897648005C0976 /* CameraTokAppViewModelTests.swift */; };
 		3470C9282A89812600BD1478 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470C9272A89812600BD1478 /* ContentView.swift */; };
 		3470C92A2A89822900BD1478 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470C9292A89822900BD1478 /* GalleryView.swift */; };
+		34B76EA32A8999F800AB4035 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EA22A8999F800AB4035 /* Localizable.strings */; };
+		34B76EB02A899C1900AB4035 /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EAA2A899C1900AB4035 /* Manrope-Bold.ttf */; };
+		34B76EB12A899C1900AB4035 /* Manrope-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EAB2A899C1900AB4035 /* Manrope-SemiBold.ttf */; };
+		34B76EB22A899C1900AB4035 /* AppFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EAC2A899C1900AB4035 /* AppFont.swift */; };
+		34B76EB32A899C1900AB4035 /* Manrope-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EAD2A899C1900AB4035 /* Manrope-Light.ttf */; };
+		34B76EB42A899C1900AB4035 /* Manrope-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EAE2A899C1900AB4035 /* Manrope-Medium.ttf */; };
+		34B76EB52A899C1900AB4035 /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EAF2A899C1900AB4035 /* Manrope-Regular.ttf */; };
+		34B76EB82A899C7900AB4035 /* camera_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EB72A899C7900AB4035 /* camera_animation.json */; };
+		34B76EBA2A899C9300AB4035 /* IntroOboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EB92A899C9300AB4035 /* IntroOboardingView.swift */; };
+		34B76EBC2A899CDF00AB4035 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EBB2A899CDF00AB4035 /* LottieView.swift */; };
+		34B76EBE2A899D7500AB4035 /* GalleryOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EBD2A899D7500AB4035 /* GalleryOnboardingView.swift */; };
+		34B76EC02A899E1500AB4035 /* gallery_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EBF2A899E1500AB4035 /* gallery_animation.json */; };
+		34B76EC22A899E2A00AB4035 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EC12A899E2A00AB4035 /* Animations.swift */; };
+		34B76EC42A899EAC00AB4035 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EC32A899EAC00AB4035 /* PrimaryButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +59,21 @@
 		3470C9252A897C5700BD1478 /* CameraTok.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CameraTok.xctestplan; sourceTree = "<group>"; };
 		3470C9272A89812600BD1478 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3470C9292A89822900BD1478 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		34B76EA22A8999F800AB4035 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		34B76EA82A899B4D00AB4035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		34B76EAA2A899C1900AB4035 /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
+		34B76EAB2A899C1900AB4035 /* Manrope-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-SemiBold.ttf"; sourceTree = "<group>"; };
+		34B76EAC2A899C1900AB4035 /* AppFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
+		34B76EAD2A899C1900AB4035 /* Manrope-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Light.ttf"; sourceTree = "<group>"; };
+		34B76EAE2A899C1900AB4035 /* Manrope-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Medium.ttf"; sourceTree = "<group>"; };
+		34B76EAF2A899C1900AB4035 /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
+		34B76EB72A899C7900AB4035 /* camera_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = camera_animation.json; sourceTree = "<group>"; };
+		34B76EB92A899C9300AB4035 /* IntroOboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroOboardingView.swift; sourceTree = "<group>"; };
+		34B76EBB2A899CDF00AB4035 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		34B76EBD2A899D7500AB4035 /* GalleryOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryOnboardingView.swift; sourceTree = "<group>"; };
+		34B76EBF2A899E1500AB4035 /* gallery_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gallery_animation.json; sourceTree = "<group>"; };
+		34B76EC12A899E2A00AB4035 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
+		34B76EC32A899EAC00AB4035 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +99,10 @@
 		340BE17D2A896714005C0976 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				34B76EB62A899C6800AB4035 /* Animations */,
+				34B76EA92A899BFE00AB4035 /* Fonts */,
 				3426BD222A894B5E00FB3B68 /* Assets.xcassets */,
+				34B76EA22A8999F800AB4035 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -141,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				340BE1822A8968B8005C0976 /* Data */,
+				34B76EA82A899B4D00AB4035 /* Info.plist */,
 				3426BD242A894B5E00FB3B68 /* Preview Content */,
 				340BE17D2A896714005C0976 /* Resources */,
 				340BE17E2A896878005C0976 /* Scenes */,
@@ -170,14 +203,41 @@
 			isa = PBXGroup;
 			children = (
 				3470C9272A89812600BD1478 /* ContentView.swift */,
+				34B76EBB2A899CDF00AB4035 /* LottieView.swift */,
+				34B76EC32A899EAC00AB4035 /* PrimaryButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		34B76EA92A899BFE00AB4035 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				34B76EAC2A899C1900AB4035 /* AppFont.swift */,
+				34B76EAA2A899C1900AB4035 /* Manrope-Bold.ttf */,
+				34B76EAD2A899C1900AB4035 /* Manrope-Light.ttf */,
+				34B76EAE2A899C1900AB4035 /* Manrope-Medium.ttf */,
+				34B76EAF2A899C1900AB4035 /* Manrope-Regular.ttf */,
+				34B76EAB2A899C1900AB4035 /* Manrope-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		34B76EB62A899C6800AB4035 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				34B76EBF2A899E1500AB4035 /* gallery_animation.json */,
+				34B76EB72A899C7900AB4035 /* camera_animation.json */,
+				34B76EC12A899E2A00AB4035 /* Animations.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		34CFE7322A89605B0073803B /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				340BE17F2A896895005C0976 /* OnboardingView.swift */,
+				34B76EB92A899C9300AB4035 /* IntroOboardingView.swift */,
+				34B76EBD2A899D7500AB4035 /* GalleryOnboardingView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -279,7 +339,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B76EB52A899C1900AB4035 /* Manrope-Regular.ttf in Resources */,
+				34B76EB12A899C1900AB4035 /* Manrope-SemiBold.ttf in Resources */,
+				34B76EB02A899C1900AB4035 /* Manrope-Bold.ttf in Resources */,
 				3426BD262A894B5E00FB3B68 /* Preview Assets.xcassets in Resources */,
+				34B76EB42A899C1900AB4035 /* Manrope-Medium.ttf in Resources */,
+				34B76EC02A899E1500AB4035 /* gallery_animation.json in Resources */,
+				34B76EB82A899C7900AB4035 /* camera_animation.json in Resources */,
+				34B76EA32A8999F800AB4035 /* Localizable.strings in Resources */,
+				34B76EB32A899C1900AB4035 /* Manrope-Light.ttf in Resources */,
 				3426BD232A894B5E00FB3B68 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,11 +366,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B76EB22A899C1900AB4035 /* AppFont.swift in Sources */,
 				3470C92A2A89822900BD1478 /* GalleryView.swift in Sources */,
+				34B76EC22A899E2A00AB4035 /* Animations.swift in Sources */,
 				340BE18A2A896F70005C0976 /* CameraTokAppViewModel.swift in Sources */,
+				34B76EBE2A899D7500AB4035 /* GalleryOnboardingView.swift in Sources */,
+				34B76EC42A899EAC00AB4035 /* PrimaryButton.swift in Sources */,
 				340BE1802A896895005C0976 /* OnboardingView.swift in Sources */,
 				3470C9282A89812600BD1478 /* ContentView.swift in Sources */,
 				340BE1842A8968CB005C0976 /* PersistenceService.swift in Sources */,
+				34B76EBA2A899C9300AB4035 /* IntroOboardingView.swift in Sources */,
+				34B76EBC2A899CDF00AB4035 /* LottieView.swift in Sources */,
 				340BE18F2A89714A005C0976 /* PersistenceService+Dependencies.swift in Sources */,
 				3426BD1F2A894B5C00FB3B68 /* CameraTokApp.swift in Sources */,
 			);
@@ -450,6 +524,7 @@
 				DEVELOPMENT_TEAM = KL5CTQ2N5S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CameraTok/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CameraTok;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -482,6 +557,7 @@
 				DEVELOPMENT_TEAM = KL5CTQ2N5S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CameraTok/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CameraTok;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
