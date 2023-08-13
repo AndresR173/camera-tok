@@ -1,0 +1,37 @@
+name: Main
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Install Xcodecoverageconverter
+        run: brew install twittemb/formulae/Xcodecoverageconverter
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run tests
+        run: |
+          xcodebuild clean test \
+            -project 'CameraTok.xcodeproj' \
+            -scheme 'CameraTok' \
+            -destination "platform=iOS Simulator,name=iPhone 13,OS=latest" \
+            -derivedDataPath Build/ \
+            -enableCodeCoverage YES \
+            build test
+          xcrun xccov view --report --json Build/Logs/Test/*.xcresult > coverage.json
+          /usr/local/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests
+      - name: Validate if build/tests passed
+        run: |
+            if [ $? -eq 0 ]; then
+              echo "Tests and build have passed succesfully"
+            else
+              echo "Tests and build have passed failed, the pull request can't be merged"
+              exit 1
+            fi
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

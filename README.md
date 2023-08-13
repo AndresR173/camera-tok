@@ -1,5 +1,9 @@
 # CameraTok
 
+![](https://badges.fyi/github/license/AndresR173/camera-tok)
+![GitHub Build Status](https://github.com/AndresR173/camera-tok/workflows/Main/badge.svg)
+[![codecov](https://codecov.io/gh/AndresR173/camera-tok/branch/main/graph/badge.svg?token=8H3F0HWP4M)](https://codecov.io/gh/AndresR173/camera-tok)
+
 **Rediscover Your Memories Through Time**
 
 ## Getting Started
