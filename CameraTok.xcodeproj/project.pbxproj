@@ -33,6 +33,8 @@
 		34B76EC02A899E1500AB4035 /* gallery_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EBF2A899E1500AB4035 /* gallery_animation.json */; };
 		34B76EC22A899E2A00AB4035 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EC12A899E2A00AB4035 /* Animations.swift */; };
 		34B76EC42A899EAC00AB4035 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EC32A899EAC00AB4035 /* PrimaryButton.swift */; };
+		34B76EC92A89A65800AB4035 /* GalleryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EC82A89A65800AB4035 /* GalleryService.swift */; };
+		34B76ECB2A89AC1200AB4035 /* GalleryService+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76ECA2A89AC1200AB4035 /* GalleryService+Dependencies.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		34B76EBF2A899E1500AB4035 /* gallery_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = gallery_animation.json; sourceTree = "<group>"; };
 		34B76EC12A899E2A00AB4035 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		34B76EC32A899EAC00AB4035 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		34B76EC82A89A65800AB4035 /* GalleryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryService.swift; sourceTree = "<group>"; };
+		34B76ECA2A89AC1200AB4035 /* GalleryService+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GalleryService+Dependencies.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,13 +130,13 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		340BE1822A8968B8005C0976 /* Data */ = {
+		340BE1822A8968B8005C0976 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				340BE1832A8968CB005C0976 /* PersistenceService.swift */,
-				340BE18E2A89714A005C0976 /* PersistenceService+Dependencies.swift */,
+				34B76EC72A89A64C00AB4035 /* Gallery */,
+				34B76EC52A89A62700AB4035 /* Persistence */,
 			);
-			path = Data;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		340BE1872A896F5B005C0976 /* Views */ = {
@@ -172,7 +176,7 @@
 		3426BD1D2A894B5C00FB3B68 /* CameraTok */ = {
 			isa = PBXGroup;
 			children = (
-				340BE1822A8968B8005C0976 /* Data */,
+				340BE1822A8968B8005C0976 /* Services */,
 				34B76EA82A899B4D00AB4035 /* Info.plist */,
 				3426BD242A894B5E00FB3B68 /* Preview Content */,
 				340BE17D2A896714005C0976 /* Resources */,
@@ -230,6 +234,24 @@
 				34B76EC12A899E2A00AB4035 /* Animations.swift */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		34B76EC52A89A62700AB4035 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				340BE1832A8968CB005C0976 /* PersistenceService.swift */,
+				340BE18E2A89714A005C0976 /* PersistenceService+Dependencies.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		34B76EC72A89A64C00AB4035 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				34B76EC82A89A65800AB4035 /* GalleryService.swift */,
+				34B76ECA2A89AC1200AB4035 /* GalleryService+Dependencies.swift */,
+			);
+			path = Gallery;
 			sourceTree = "<group>";
 		};
 		34CFE7322A89605B0073803B /* Onboarding */ = {
@@ -376,6 +398,8 @@
 				3470C9282A89812600BD1478 /* ContentView.swift in Sources */,
 				340BE1842A8968CB005C0976 /* PersistenceService.swift in Sources */,
 				34B76EBA2A899C9300AB4035 /* IntroOboardingView.swift in Sources */,
+				34B76EC92A89A65800AB4035 /* GalleryService.swift in Sources */,
+				34B76ECB2A89AC1200AB4035 /* GalleryService+Dependencies.swift in Sources */,
 				34B76EBC2A899CDF00AB4035 /* LottieView.swift in Sources */,
 				340BE18F2A89714A005C0976 /* PersistenceService+Dependencies.swift in Sources */,
 				3426BD1F2A894B5C00FB3B68 /* CameraTokApp.swift in Sources */,

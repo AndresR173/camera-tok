@@ -9,13 +9,14 @@ import SwiftUI
 
 struct OnboardingView: View {
     @State private var currentTab = 0
+    var onRequestAccess: () -> Void
 
     var body: some View {
         TabView(selection: $currentTab,
                 content:  {
             IntroOboardingView()
                 .tag(0)
-            GalleryOnboardingView()
+            GalleryOnboardingView(onRequestAccess: onRequestAccess)
                 .padding(.bottom, 48)
                 .tag(1)
         })
@@ -27,6 +28,6 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView()
+        OnboardingView() {}
     }
 }

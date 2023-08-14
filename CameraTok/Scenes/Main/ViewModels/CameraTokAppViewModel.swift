@@ -15,19 +15,25 @@ enum OnboardingStatus {
 
 final class CameraTokAppViewModel: ObservableObject {
     private let isUserOnboarded = "isUserOnboarded"
-    @Dependency(\.persistenceService) private var persistence
+    @Dependency(\.persistenceService) private var persistenceService
+    @Dependency(\.galleryService) private var galleryService
 
     @Published var onboardingStatus: OnboardingStatus = .pending
 
     init() {
-        let isUserOnboarded: Bool = persistence.getBool(forKey: isUserOnboarded)
+        let isUserOnboarded: Bool = persistenceService.getBool(forKey: isUserOnboarded)
         onboardingStatus = isUserOnboarded ? .done : .pending
     }
 
     /// Update the shared preference to let the app know that
     /// the onboarding is not longer needed
     func onOnboardingFinished() {
-        persistence.set(true, forKey: isUserOnboarded)
-        onboardingStatus = .done
+        galleryService.requestAuthorization() { [weak self] in
+            guard let self else { return }
+            self.persistenceService.set(true, forKey: self.isUserOnboarded)
+            DispatchQueue.main.async {
+                self.onboardingStatus = .done
+            }
+        }
     }
 }

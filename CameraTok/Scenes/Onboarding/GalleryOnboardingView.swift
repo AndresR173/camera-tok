@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct GalleryOnboardingView: View {
+    var onRequestAccess: () -> Void
+
     var body: some View {
         VStack {
             LottieView(lottieFile: Animations.gallery)
@@ -19,7 +21,7 @@ struct GalleryOnboardingView: View {
                 .tag(0)
             Spacer()
             PrimaryButton(title: NSLocalizedString("onboarding.grant_access", comment: "")) {
-
+                onRequestAccess()
             }
             .padding(.horizontal, 32)
         }
@@ -28,6 +30,6 @@ struct GalleryOnboardingView: View {
 
 struct GalleryOnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        GalleryOnboardingView()
+        GalleryOnboardingView() {}
     }
 }
