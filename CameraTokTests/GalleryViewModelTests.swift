@@ -36,7 +36,6 @@ final class GalleryViewModelTests: XCTestCase {
     }
 
     func testGalleryServiceSuccess() async throws {
-        
         let sut = withDependencies {
             $0.galleryService = GalleryServiceDependencyKey.MockGalleryService()
             $0.uuid = .incrementing

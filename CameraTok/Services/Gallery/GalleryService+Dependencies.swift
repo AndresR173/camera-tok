@@ -23,20 +23,18 @@ enum GalleryServiceDependencyKey: DependencyKey {
             if let error {
                 throw error
             } else {
-
                 return Array(repeating: (), count: 10).map { UUID() }
             }
         }
 
-        func requestAuthorization() async {
-            await withCheckedContinuation { continuation in
-                continuation.resume()
-            }
-        }
+        func requestAuthorization() async {}
 
         func fetchVideoThumbnail(_ id: UUID) async -> URL? {
             mockURL
         }
+
+        func validateAuthorizationStatus() async {}
+
     }
 }
 

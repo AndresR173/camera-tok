@@ -12,6 +12,7 @@ import Photos
 enum GalleryServiceError: LocalizedError {
     case assetNotFound
     case permissionsRequired
+    case generic
 
     var errorDescription: String? {
         switch self {
@@ -19,6 +20,8 @@ enum GalleryServiceError: LocalizedError {
             return NSLocalizedString("error.asset_not_found", comment: "")
         case .permissionsRequired:
             return NSLocalizedString("error.permissions_required", comment: "")
+        case .generic:
+            return NSLocalizedString("error.generic", comment: "")
         }
     }
 }
@@ -28,6 +31,7 @@ protocol GalleryServiceApi {
     func requestAuthorization() async
     func fetchVideos() async throws -> [UUID]
     func fetchVideoThumbnail(_ id: UUID) async -> URL?
+    func validateAuthorizationStatus() async
 }
 
 @MainActor
@@ -60,6 +64,10 @@ final class GalleryService: GalleryServiceApi {
         }
     }
 
+    func validateAuthorizationStatus() async {
+        phAuthorizationStatus = PHPhotoLibrary.authorizationStatus(for: .addOnly)
+    }
+
     func fetchVideos()  async throws -> [UUID] {
         switch await authorizationStatus {
         case .authorized, .limited:
@@ -86,7 +94,6 @@ final class GalleryService: GalleryServiceApi {
 
     func fetchVideoThumbnail(_ id: UUID) async -> URL? {
         if let asset = assets[id] {
-
             return await withCheckedContinuation { continuation in
                 let options: PHVideoRequestOptions = PHVideoRequestOptions()
                 options.version = .original

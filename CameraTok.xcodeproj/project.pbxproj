@@ -12,7 +12,6 @@
 		3401C4D32A8A9DA20014D7C5 /* SceneStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401C4D22A8A9DA20014D7C5 /* SceneStatus.swift */; };
 		3401C4D52A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401C4D42A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift */; };
 		3401C4D72A8A9E9D0014D7C5 /* GalleryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401C4D62A8A9E9D0014D7C5 /* GalleryViewModelTests.swift */; };
-		3401C4DA2A8AA7700014D7C5 /* UUID+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401C4D92A8AA7700014D7C5 /* UUID+Dependencies.swift */; };
 		340BE1802A896895005C0976 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE17F2A896895005C0976 /* OnboardingView.swift */; };
 		340BE1842A8968CB005C0976 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE1832A8968CB005C0976 /* PersistenceService.swift */; };
 		340BE18A2A896F70005C0976 /* CameraTokAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE1892A896F70005C0976 /* CameraTokAppViewModel.swift */; };
@@ -59,7 +58,6 @@
 		3401C4D22A8A9DA20014D7C5 /* SceneStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStatus.swift; sourceTree = "<group>"; };
 		3401C4D42A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAuthorizationStatus.swift; sourceTree = "<group>"; };
 		3401C4D62A8A9E9D0014D7C5 /* GalleryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModelTests.swift; sourceTree = "<group>"; };
-		3401C4D92A8AA7700014D7C5 /* UUID+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+Dependencies.swift"; sourceTree = "<group>"; };
 		340BE17F2A896895005C0976 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		340BE1832A8968CB005C0976 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		340BE1892A896F70005C0976 /* CameraTokAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTokAppViewModel.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 		3401C4D82A8AA75C0014D7C5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3401C4D92A8AA7700014D7C5 /* UUID+Dependencies.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -465,7 +462,6 @@
 				3401C4CE2A8A6EC60014D7C5 /* GalleryViewModel.swift in Sources */,
 				340BE18F2A89714A005C0976 /* PersistenceService+Dependencies.swift in Sources */,
 				3426BD1F2A894B5C00FB3B68 /* CameraTokApp.swift in Sources */,
-				3401C4DA2A8AA7700014D7C5 /* UUID+Dependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

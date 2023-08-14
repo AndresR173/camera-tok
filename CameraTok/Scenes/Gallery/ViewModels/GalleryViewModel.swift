@@ -16,6 +16,9 @@ final class GalleryViewModel: ObservableObject {
     @Published var viewStatus: SceneStatus = .loading
 
     func refreshGallery() async {
+        if await galleryService.authorizationStatus == .notDetermined {
+            await galleryService.validateAuthorizationStatus()
+        }
         do {
             gallery = try await galleryService.fetchVideos()
             viewStatus = gallery.isEmpty ? .empty : .loaded

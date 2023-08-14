@@ -1,8 +1,0 @@
-//
-//  UUID+Dependencies.swift
-//  CameraTok
-//
-//  Created by Andres Rojas on 14/08/23.
-//
-
-import Foundation

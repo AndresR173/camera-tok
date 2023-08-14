@@ -5,43 +5,51 @@
 //  Created by Andres Rojas on 14/08/23.
 //
 
-import AVKit
+import AVFoundation
 import Dependencies
 import SwiftUI
 import Photos
 
 struct ThumbnailView: View {
     let id: UUID
-    @State private var url: URL?
+    @State private var image: UIImage?
     @Dependency(\.galleryService) private var service
 
     var body: some View {
         GeometryReader { proxy in
             thumbnail()
                 .frame(
-                    width: proxy.size.width,
-                    height: proxy.size.width
+                    width: proxy.size.width
                 )
                 .clipped()
         }
-        .aspectRatio(1, contentMode: .fit)
+        .aspectRatio(0.5, contentMode: .fit)
         .task {
-            url = await service.fetchVideoThumbnail(id)
+            if let url = await service.fetchVideoThumbnail(id) {
+                let asset: AVAsset = AVAsset(url: url)
+                let imageGenerator = AVAssetImageGenerator(asset: asset)
+
+                do {
+                    let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60), actualTime: nil)
+                    image = UIImage(cgImage: thumbnailImage)
+                } catch {
+                    image = nil
+                }
+            }
         }
         .onDisappear {
-            url = nil
+            image = nil
         }
     }
 
     @ViewBuilder
     func thumbnail() -> some View {
-        if let videoURL = url {
-        VideoPlayer(player: AVPlayer(url: videoURL))
-            .aspectRatio(1, contentMode: .fit)
+        if let image {
+            Image(uiImage: image)
+                .resizable()
         } else {
             Image("VideoThumbnail")
                 .resizable()
-                .aspectRatio(1, contentMode: .fit)
         }
     }
 }
