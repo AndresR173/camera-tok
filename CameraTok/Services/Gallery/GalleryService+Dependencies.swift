@@ -8,17 +8,20 @@
 import Dependencies
 import Foundation
 
+@MainActor
 enum GalleryServiceDependencyKey: DependencyKey {
     static let liveValue: GalleryServiceApi = GalleryService()
     static let previewValue: GalleryServiceApi = MockGalleryService()
     static let testValue: GalleryServiceApi = MockGalleryService()
 
     class MockGalleryService: GalleryServiceApi {
-        var authorizationStatus: GalleryAuthorizationStatus = .authorized
-
-        func requestAuthorization(onAuthorizationRequested: () -> Void) {
-            onAuthorizationRequested()
+        func requestAuthorization() async {
+            await withCheckedContinuation { continuation in
+                continuation.resume()
+            }
         }
+
+        var authorizationStatus: GalleryAuthorizationStatus = .authorized
     }
 }
 

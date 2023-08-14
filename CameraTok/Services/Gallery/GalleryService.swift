@@ -17,31 +17,36 @@ enum GalleryAuthorizationStatus {
 }
 
 protocol GalleryServiceApi {
-    var authorizationStatus: GalleryAuthorizationStatus { get }
-    func requestAuthorization(onAuthorizationRequested: @escaping () -> Void)
+    var authorizationStatus: GalleryAuthorizationStatus { get async }
+    func requestAuthorization() async
 }
 
+@MainActor
 final class GalleryService: GalleryServiceApi {
-    var authorizationStatus: GalleryAuthorizationStatus {
-        switch _authorizationStatus {
-        case .notDetermined:
-            return .notDetermined
-        case .denied, .restricted:
-            return .denied
-        case .authorized:
-            return .authorized
-        case .limited:
-            return .limited
-        @unknown default:
-            return .denied
+    nonisolated var authorizationStatus: GalleryAuthorizationStatus {
+        get async {
+            switch await _authorizationStatus {
+            case .notDetermined:
+                return .notDetermined
+            case .denied, .restricted:
+                return .denied
+            case .authorized:
+                return .authorized
+            case .limited:
+                return .limited
+            @unknown default:
+                return .denied
+            }
         }
     }
     private var _authorizationStatus: PHAuthorizationStatus = .notDetermined
 
-    func requestAuthorization(onAuthorizationRequested: @escaping () -> Void) {
-        PHPhotoLibrary.requestAuthorization { [weak self] status in
-            self?._authorizationStatus = status
-            onAuthorizationRequested()
+    func requestAuthorization() async {
+        await withCheckedContinuation { [weak self] continuation in
+            PHPhotoLibrary.requestAuthorization { [weak self] status in
+                self?._authorizationStatus = status
+                continuation.resume()
+            }
         }
     }
 }

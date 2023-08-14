@@ -10,16 +10,17 @@ import CameraTok
 import XCTest
 import Dependencies
 
+@MainActor
 final class CameraTokAppViewModelTests: XCTestCase {
-    func testInitialOnboardedStatus() throws {
+     func testInitialOnboardedStatus() async throws {
         let sut = CameraTokAppViewModel()
         XCTAssertEqual(sut.onboardingStatus, .pending)
 
-        sut.onOnboardingFinished()
+        await sut.onOnboardingFinished()
         XCTAssertEqual(sut.onboardingStatus, .done)
     }
 
-    func testInitialOnboardedStatusDone() throws {
+    func testInitialOnboardedStatusDone() async throws {
         let mockPersistence = PersistenceServiceDependencyKey.MockPersistenceService()
         mockPersistence.set(true, forKey: "isUserOnboarded")
         let sut = withDependencies({

@@ -17,7 +17,9 @@ struct CameraTokApp: App {
                 switch viewModel.onboardingStatus {
                 case .pending:
                     OnboardingView() {
-                        viewModel.onOnboardingFinished()
+                        Task {
+                            await viewModel.onOnboardingFinished()
+                        }
                     }
                 case .done:
                     GalleryView()
