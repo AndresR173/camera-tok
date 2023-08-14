@@ -8,12 +8,7 @@
 
 ## Getting Started
 
-This project uses `SwiftLint` to enforce Swift style and conventions. To run this project, please use Xcode 14.1+ and iOS 15.0+.
-
-### Using [Homebrew](http://brew.sh/):
-```
-brew install swiftlint
-```
+Clone the repo by running `git clone https://github.com/AndresR173/camera-tok.git` and build the project using Xcode 14.3.1
 
 ## Project details
 
@@ -23,7 +18,7 @@ This project uses MVVM as architectural design pattern.
 ## Third party dependencies
 
 - [Lottie](https://github.com/airbnb/lottie-ios)
-- [Swinject](https://github.com/Swinject/Swinject)
+- [Dependencies](https://github.com/pointfreeco/swift-dependencies)
 
 ## Demo
 

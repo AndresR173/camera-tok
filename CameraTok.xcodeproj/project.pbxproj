@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3401C4CE2A8A6EC60014D7C5 /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401C4CD2A8A6EC60014D7C5 /* GalleryViewModel.swift */; };
+		3401C4D02A8A8A570014D7C5 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401C4CF2A8A8A570014D7C5 /* ThumbnailView.swift */; };
+		3401C4D32A8A9DA20014D7C5 /* SceneStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401C4D22A8A9DA20014D7C5 /* SceneStatus.swift */; };
+		3401C4D52A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401C4D42A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift */; };
+		3401C4D72A8A9E9D0014D7C5 /* GalleryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401C4D62A8A9E9D0014D7C5 /* GalleryViewModelTests.swift */; };
+		3401C4DA2A8AA7700014D7C5 /* UUID+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3401C4D92A8AA7700014D7C5 /* UUID+Dependencies.swift */; };
 		340BE1802A896895005C0976 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE17F2A896895005C0976 /* OnboardingView.swift */; };
 		340BE1842A8968CB005C0976 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE1832A8968CB005C0976 /* PersistenceService.swift */; };
 		340BE18A2A896F70005C0976 /* CameraTokAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE1892A896F70005C0976 /* CameraTokAppViewModel.swift */; };
@@ -48,6 +54,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3401C4CD2A8A6EC60014D7C5 /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
+		3401C4CF2A8A8A570014D7C5 /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
+		3401C4D22A8A9DA20014D7C5 /* SceneStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneStatus.swift; sourceTree = "<group>"; };
+		3401C4D42A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryAuthorizationStatus.swift; sourceTree = "<group>"; };
+		3401C4D62A8A9E9D0014D7C5 /* GalleryViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModelTests.swift; sourceTree = "<group>"; };
+		3401C4D92A8AA7700014D7C5 /* UUID+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UUID+Dependencies.swift"; sourceTree = "<group>"; };
 		340BE17F2A896895005C0976 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		340BE1832A8968CB005C0976 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		340BE1892A896F70005C0976 /* CameraTokAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTokAppViewModel.swift; sourceTree = "<group>"; };
@@ -100,6 +112,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3401C4CA2A8A6E9F0014D7C5 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				3401C4CC2A8A6EB90014D7C5 /* ViewModels */,
+				3401C4CB2A8A6EB00014D7C5 /* Views */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		3401C4CB2A8A6EB00014D7C5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3470C9292A89822900BD1478 /* GalleryView.swift */,
+				3401C4CF2A8A8A570014D7C5 /* ThumbnailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3401C4CC2A8A6EB90014D7C5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				3401C4CD2A8A6EC60014D7C5 /* GalleryViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		3401C4D12A8A9D900014D7C5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3401C4D22A8A9DA20014D7C5 /* SceneStatus.swift */,
+				3401C4D42A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3401C4D82A8AA75C0014D7C5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3401C4D92A8AA7700014D7C5 /* UUID+Dependencies.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		340BE17D2A896714005C0976 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,9 +169,9 @@
 		340BE17E2A896878005C0976 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3401C4CA2A8A6E9F0014D7C5 /* Gallery */,
 				340BE1812A8968A2005C0976 /* Main */,
 				34CFE7322A89605B0073803B /* Onboarding */,
-				3470C9292A89822900BD1478 /* GalleryView.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -176,11 +231,12 @@
 		3426BD1D2A894B5C00FB3B68 /* CameraTok */ = {
 			isa = PBXGroup;
 			children = (
-				340BE1822A8968B8005C0976 /* Services */,
 				34B76EA82A899B4D00AB4035 /* Info.plist */,
+				3401C4D12A8A9D900014D7C5 /* Models */,
 				3426BD242A894B5E00FB3B68 /* Preview Content */,
 				340BE17D2A896714005C0976 /* Resources */,
 				340BE17E2A896878005C0976 /* Scenes */,
+				340BE1822A8968B8005C0976 /* Services */,
 				34CFE7332A8960660073803B /* Utils */,
 				3470C9262A89811400BD1478 /* Views */,
 			);
@@ -199,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				340BE1902A897648005C0976 /* CameraTokAppViewModelTests.swift */,
+				3401C4D62A8A9E9D0014D7C5 /* GalleryViewModelTests.swift */,
 			);
 			path = CameraTokTests;
 			sourceTree = "<group>";
@@ -267,6 +324,7 @@
 		34CFE7332A8960660073803B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3401C4D82A8AA75C0014D7C5 /* Extensions */,
 				3470C9252A897C5700BD1478 /* CameraTok.xctestplan */,
 			);
 			path = Utils;
@@ -388,6 +446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3401C4D32A8A9DA20014D7C5 /* SceneStatus.swift in Sources */,
 				34B76EB22A899C1900AB4035 /* AppFont.swift in Sources */,
 				3470C92A2A89822900BD1478 /* GalleryView.swift in Sources */,
 				34B76EC22A899E2A00AB4035 /* Animations.swift in Sources */,
@@ -396,13 +455,17 @@
 				34B76EC42A899EAC00AB4035 /* PrimaryButton.swift in Sources */,
 				340BE1802A896895005C0976 /* OnboardingView.swift in Sources */,
 				3470C9282A89812600BD1478 /* ContentView.swift in Sources */,
+				3401C4D52A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift in Sources */,
 				340BE1842A8968CB005C0976 /* PersistenceService.swift in Sources */,
 				34B76EBA2A899C9300AB4035 /* IntroOboardingView.swift in Sources */,
 				34B76EC92A89A65800AB4035 /* GalleryService.swift in Sources */,
+				3401C4D02A8A8A570014D7C5 /* ThumbnailView.swift in Sources */,
 				34B76ECB2A89AC1200AB4035 /* GalleryService+Dependencies.swift in Sources */,
 				34B76EBC2A899CDF00AB4035 /* LottieView.swift in Sources */,
+				3401C4CE2A8A6EC60014D7C5 /* GalleryViewModel.swift in Sources */,
 				340BE18F2A89714A005C0976 /* PersistenceService+Dependencies.swift in Sources */,
 				3426BD1F2A894B5C00FB3B68 /* CameraTokApp.swift in Sources */,
+				3401C4DA2A8AA7700014D7C5 /* UUID+Dependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3470C9242A897BEE00BD1478 /* CameraTokAppViewModelTests.swift in Sources */,
+				3401C4D72A8A9E9D0014D7C5 /* GalleryViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

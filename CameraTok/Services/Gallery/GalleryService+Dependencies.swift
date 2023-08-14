@@ -15,13 +15,28 @@ enum GalleryServiceDependencyKey: DependencyKey {
     static let testValue: GalleryServiceApi = MockGalleryService()
 
     class MockGalleryService: GalleryServiceApi {
+        var authorizationStatus: GalleryAuthorizationStatus = .authorized
+        var mockURL: URL? = nil
+        var error: GalleryServiceError? = nil
+
+        func fetchVideos() async throws -> [UUID] {
+            if let error {
+                throw error
+            } else {
+
+                return Array(repeating: (), count: 10).map { UUID() }
+            }
+        }
+
         func requestAuthorization() async {
             await withCheckedContinuation { continuation in
                 continuation.resume()
             }
         }
 
-        var authorizationStatus: GalleryAuthorizationStatus = .authorized
+        func fetchVideoThumbnail(_ id: UUID) async -> URL? {
+            mockURL
+        }
     }
 }
 

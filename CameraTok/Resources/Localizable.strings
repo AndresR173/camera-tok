@@ -9,3 +9,6 @@
 "onboarding.intro" = "Step into the Past, Relive the Present: Unveil Your Memories Through Time with CameraTok.";
 "onboarding.gallery" = "Unlock Your Memories: Grant Us Access to Your Gallery and Step into a World of Timeless Stories.";
 "onboarding.grant_access" = "Grant Access";
+"error.generic" = "Something went wrong, please try again";
+"error.asset_not_found" = "We can't load your video";
+"error.permissions_required" = "We need access to you gallery";
