@@ -16,22 +16,18 @@ enum GalleryServiceDependencyKey: DependencyKey {
 
     class MockGalleryService: GalleryServiceApi {
         var authorizationStatus: GalleryAuthorizationStatus = .authorized
-        var mockURL: URL? = nil
         var error: GalleryServiceError? = nil
 
-        func fetchVideos() async throws -> [UUID] {
+        func fetchVideos() async throws -> [VideoAsset] {
             if let error {
                 throw error
             } else {
-                return Array(repeating: (), count: 10).map { UUID() }
+                let url = Bundle.main.url(forResource: "video_test", withExtension: "mov")!
+                return Array(repeating: (), count: 10).map { .init(url: url) }
             }
         }
 
         func requestAuthorization() async {}
-
-        func fetchVideoThumbnail(_ id: UUID) async -> URL? {
-            mockURL
-        }
 
         func validateAuthorizationStatus() async {}
 

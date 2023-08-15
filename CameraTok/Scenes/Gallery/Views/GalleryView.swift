@@ -9,38 +9,54 @@ import SwiftUI
 
 struct GalleryView: View {
     @StateObject private var viewModel = GalleryViewModel()
+    @State private var videoAsset: VideoAsset? = nil
 
     var body: some View {
-        galleryView()
-        .padding(.horizontal)
-        .task {
-            await viewModel.refreshGallery()
-        }
+        buildGalleryView()
+            .padding(.horizontal)
+            .task {
+                await viewModel.refreshGallery()
+            }
     }
 
     @ViewBuilder
-    func galleryView() -> some View {
+    func buildGalleryView() -> some View {
         switch viewModel.viewStatus {
         case .loaded:
-            ScrollView(.vertical) {
-                LazyVGrid(
-                    columns: Array(
-                        repeating: .init(.adaptive(minimum: 100), spacing: 8),
-                        count: 3),
-                    alignment: .center,
-                    spacing: 8
-                ) {
-                    ForEach(viewModel.gallery, id: \.self) { asset in
-                        ThumbnailView(id: asset)
-                    }
-                }
-            }
+            galleryView
         case .loading:
             ProgressView()
         case .error(let error):
             Text(error)
         case .empty:
             Text("empty")
+        }
+    }
+}
+
+extension GalleryView {
+    var galleryView: some View {
+        ScrollView(.vertical) {
+            LazyVGrid(
+                columns: Array(
+                    repeating: .init(.adaptive(minimum: 100), spacing: 8),
+                    count: 3),
+                alignment: .center,
+                spacing: 8
+            ) {
+                ForEach($viewModel.videos, id: \.self) { asset in
+                    ThumbnailView(asset: asset.wrappedValue)
+                        .onTapGesture {
+                            videoAsset = asset.wrappedValue
+                        }
+                }
+            }
+            .fullScreenCover(item: $videoAsset) { asset in
+                VideoFeedView(
+                    videos: viewModel.videos,
+                    currentIndex: viewModel.videos.firstIndex(where: { $0.id == asset.id }) ?? 0
+                )
+            }
         }
     }
 }

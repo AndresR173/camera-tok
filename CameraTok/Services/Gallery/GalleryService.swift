@@ -29,8 +29,7 @@ enum GalleryServiceError: LocalizedError {
 protocol GalleryServiceApi {
     var authorizationStatus: GalleryAuthorizationStatus { get async }
     func requestAuthorization() async
-    func fetchVideos() async throws -> [UUID]
-    func fetchVideoThumbnail(_ id: UUID) async -> URL?
+    func fetchVideos() async throws -> [VideoAsset]
     func validateAuthorizationStatus() async
 }
 
@@ -53,7 +52,7 @@ final class GalleryService: GalleryServiceApi {
         }
     }
     private var phAuthorizationStatus: PHAuthorizationStatus = .notDetermined
-    private var assets: [UUID: PHAsset] = [:]
+    private var assets: [VideoAsset] = []
 
     func requestAuthorization() async {
         await withCheckedContinuation { continuation in
@@ -68,7 +67,7 @@ final class GalleryService: GalleryServiceApi {
         phAuthorizationStatus = PHPhotoLibrary.authorizationStatus(for: .addOnly)
     }
 
-    func fetchVideos()  async throws -> [UUID] {
+    func fetchVideos()  async throws -> [VideoAsset] {
         switch await authorizationStatus {
         case .authorized, .limited:
             @Dependency(\.uuid) var uuid
@@ -80,34 +79,39 @@ final class GalleryService: GalleryServiceApi {
                 NSSortDescriptor(key: "creationDate", ascending: false)
             ]
             let fetchResult = PHAsset.fetchAssets(with: .video, options: fetchOptions)
-            fetchResult.enumerateObjects {[weak self] asset, index, stop in
-                guard let self else { return }
-                self.assets[uuid()] = asset
+            var phAssets: [PHAsset] = []
+            fetchResult.enumerateObjects { asset, index, stop in
+                phAssets.append(asset)
             }
-
-            return assets.keys.map { $0 }
+            var urls: [URL?] = []
+            for asset in phAssets {
+                let url = await getAssetURL(asset)
+                urls.append(url)
+            }
+            let newAssets: [VideoAsset] = urls.compactMap {
+                guard let url = $0 else { return nil }
+                return VideoAsset(url: url)
+            }
+            assets.append(contentsOf: newAssets)
+            return assets
         default:
             throw GalleryServiceError.permissionsRequired
         }
 
     }
 
-    func fetchVideoThumbnail(_ id: UUID) async -> URL? {
-        if let asset = assets[id] {
-            return await withCheckedContinuation { continuation in
-                let options: PHVideoRequestOptions = PHVideoRequestOptions()
-                options.version = .original
-                PHImageManager.default().requestAVAsset(forVideo: asset, options: options) { asset, audioMix, info  in
-                    if let urlAsset = asset as? AVURLAsset {
-                        let localVideoUrl: URL = urlAsset.url as URL
-                        continuation.resume(returning: localVideoUrl)
-                    } else {
-                        continuation.resume(returning: nil)
-                    }
+    private func getAssetURL(_ asset: PHAsset) async -> URL? {
+        return await withCheckedContinuation { continuation in
+            let options: PHVideoRequestOptions = PHVideoRequestOptions()
+            options.version = .original
+            PHImageManager.default().requestAVAsset(forVideo: asset, options: options) { asset, audioMix, info  in
+                if let urlAsset = asset as? AVURLAsset {
+                    let localVideoUrl: URL = urlAsset.url as URL
+                    continuation.resume(returning: localVideoUrl)
+                } else {
+                    continuation.resume(returning: nil)
                 }
             }
-        } else {
-            return nil
         }
     }
 }

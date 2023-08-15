@@ -11,7 +11,7 @@ import SwiftUI
 import Photos
 
 struct ThumbnailView: View {
-    let id: UUID
+    let asset: VideoAsset
     @State private var image: UIImage?
     @Dependency(\.galleryService) private var service
 
@@ -25,16 +25,15 @@ struct ThumbnailView: View {
         }
         .aspectRatio(0.5, contentMode: .fit)
         .task {
-            if let url = await service.fetchVideoThumbnail(id) {
-                let asset: AVAsset = AVAsset(url: url)
-                let imageGenerator = AVAssetImageGenerator(asset: asset)
+            let url = asset.url
+            let asset: AVAsset = AVAsset(url: url)
+            let imageGenerator = AVAssetImageGenerator(asset: asset)
 
-                do {
-                    let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60), actualTime: nil)
-                    image = UIImage(cgImage: thumbnailImage)
-                } catch {
-                    image = nil
-                }
+            do {
+                let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60), actualTime: nil)
+                image = UIImage(cgImage: thumbnailImage)
+            } catch {
+                image = nil
             }
         }
         .onDisappear {
@@ -56,6 +55,7 @@ struct ThumbnailView: View {
 
 struct ThumbnailView_Previews: PreviewProvider {
     static var previews: some View {
-        ThumbnailView(id: UUID())
+        let url = Bundle.main.url(forResource: "video_test", withExtension: "mov")!
+        ThumbnailView(asset: .init(url: url))
     }
 }

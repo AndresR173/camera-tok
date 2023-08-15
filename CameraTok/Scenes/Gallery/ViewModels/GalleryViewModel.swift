@@ -12,7 +12,7 @@ import Foundation
 final class GalleryViewModel: ObservableObject {
     @Dependency(\.galleryService) private var galleryService
 
-    var gallery: [UUID] = []
+    @Published var videos: [VideoAsset] = []
     @Published var viewStatus: SceneStatus = .loading
 
     func refreshGallery() async {
@@ -20,8 +20,8 @@ final class GalleryViewModel: ObservableObject {
             await galleryService.validateAuthorizationStatus()
         }
         do {
-            gallery = try await galleryService.fetchVideos()
-            viewStatus = gallery.isEmpty ? .empty : .loaded
+            videos = try await galleryService.fetchVideos()
+            viewStatus = videos.isEmpty ? .empty : .loaded
         } catch {
             if let error = error as? GalleryServiceError {
                 viewStatus = .error(error.localizedDescription)
@@ -29,9 +29,5 @@ final class GalleryViewModel: ObservableObject {
                 viewStatus = .error(NSLocalizedString("error.generic", comment: ""))
             }
         }
-    }
-
-    func fetchVideoURL(_ id: UUID) async -> URL? {
-        await galleryService.fetchVideoThumbnail(id)
     }
 }
