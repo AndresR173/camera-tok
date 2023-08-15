@@ -20,9 +20,11 @@ struct VideoFeedView: View {
         GeometryReader { geometry in
             ScrollView(showsIndicators: false) {
                 LazyVStack(spacing: 0) {
-                    ForEach(videos, id: \.self) { video in
+                    ForEach(Array(videos.enumerated()), id: \.offset) { index, video in
                         VideoPlayerView(
-                            url: video.url
+                            url: video.url,
+                            videoIndex: index,
+                            currentIndex: $currentIndex
                         )
                         .frame(
                             width: geometry.size.width,
@@ -64,12 +66,12 @@ struct VideoFeedView: View {
 extension VideoFeedView {
     var toolbarView: some View {
         HStack {
-            closeButton
+            Spacer()
+            VStack {
+                closeButton
+                Spacer()
+            }
         }
-        .frame(maxWidth: .infinity, alignment: .trailing)
-        .padding(.horizontal, 20)
-        .frame(height: 44)
-        .frame(maxHeight: .infinity, alignment: .top)
     }
 
     var closeButton: some View {
@@ -77,7 +79,6 @@ extension VideoFeedView {
             dismiss()
         } label: {
             Image(systemName: "xmark")
-                .font(.body.bold())
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(.white)
                 .frame(width: 16, height: 16)

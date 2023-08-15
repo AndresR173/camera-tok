@@ -27,6 +27,7 @@
 		3470C9242A897BEE00BD1478 /* CameraTokAppViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE1902A897648005C0976 /* CameraTokAppViewModelTests.swift */; };
 		3470C9282A89812600BD1478 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470C9272A89812600BD1478 /* ContentView.swift */; };
 		3470C92A2A89822900BD1478 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470C9292A89822900BD1478 /* GalleryView.swift */; };
+		34933CC02A8BFA8C00F4054A /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34933CBF2A8BFA8C00F4054A /* ControlButton.swift */; };
 		34B76EA32A8999F800AB4035 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EA22A8999F800AB4035 /* Localizable.strings */; };
 		34B76EB02A899C1900AB4035 /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EAA2A899C1900AB4035 /* Manrope-Bold.ttf */; };
 		34B76EB12A899C1900AB4035 /* Manrope-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 34B76EAB2A899C1900AB4035 /* Manrope-SemiBold.ttf */; };
@@ -43,6 +44,8 @@
 		34B76EC42A899EAC00AB4035 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EC32A899EAC00AB4035 /* PrimaryButton.swift */; };
 		34B76EC92A89A65800AB4035 /* GalleryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76EC82A89A65800AB4035 /* GalleryService.swift */; };
 		34B76ECB2A89AC1200AB4035 /* GalleryService+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76ECA2A89AC1200AB4035 /* GalleryService+Dependencies.swift */; };
+		34E830BC2A8BBBCE00168A51 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E830BB2A8BBBCE00168A51 /* PlayerControlsView.swift */; };
+		34E830BE2A8BD0B300168A51 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E830BD2A8BD0B300168A51 /* CustomSlider.swift */; };
 		34F7766F2A8AE8A5004AEBCF /* VideoAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7766E2A8AE8A5004AEBCF /* VideoAsset.swift */; };
 		34F776732A8AEC2B004AEBCF /* video_test.mov in Resources */ = {isa = PBXBuildFile; fileRef = 34F776722A8AEC2B004AEBCF /* video_test.mov */; };
 /* End PBXBuildFile section */
@@ -79,6 +82,7 @@
 		3470C9252A897C5700BD1478 /* CameraTok.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CameraTok.xctestplan; sourceTree = "<group>"; };
 		3470C9272A89812600BD1478 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3470C9292A89822900BD1478 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		34933CBF2A8BFA8C00F4054A /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 		34B76EA22A8999F800AB4035 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		34B76EA82A899B4D00AB4035 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		34B76EAA2A899C1900AB4035 /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 		34B76EC32A899EAC00AB4035 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		34B76EC82A89A65800AB4035 /* GalleryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryService.swift; sourceTree = "<group>"; };
 		34B76ECA2A89AC1200AB4035 /* GalleryService+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GalleryService+Dependencies.swift"; sourceTree = "<group>"; };
+		34E830BB2A8BBBCE00168A51 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
+		34E830BD2A8BD0B300168A51 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		34F7766E2A8AE8A5004AEBCF /* VideoAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoAsset.swift; sourceTree = "<group>"; };
 		34F776722A8AEC2B004AEBCF /* video_test.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video_test.mov; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +142,7 @@
 				3401C4CF2A8A8A570014D7C5 /* ThumbnailView.swift */,
 				343D22C02A8AD93E00CAA663 /* VideoPlayerView.swift */,
 				3441DD082A8AE36C009A33AE /* VideoFeedView.swift */,
+				34E830BB2A8BBBCE00168A51 /* PlayerControlsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,6 +278,8 @@
 				3470C9272A89812600BD1478 /* ContentView.swift */,
 				34B76EBB2A899CDF00AB4035 /* LottieView.swift */,
 				34B76EC32A899EAC00AB4035 /* PrimaryButton.swift */,
+				34E830BD2A8BD0B300168A51 /* CustomSlider.swift */,
+				34933CBF2A8BFA8C00F4054A /* ControlButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -463,6 +472,7 @@
 				340BE1802A896895005C0976 /* OnboardingView.swift in Sources */,
 				3470C9282A89812600BD1478 /* ContentView.swift in Sources */,
 				3401C4D52A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift in Sources */,
+				34E830BC2A8BBBCE00168A51 /* PlayerControlsView.swift in Sources */,
 				340BE1842A8968CB005C0976 /* PersistenceService.swift in Sources */,
 				34B76EBA2A899C9300AB4035 /* IntroOboardingView.swift in Sources */,
 				34B76EC92A89A65800AB4035 /* GalleryService.swift in Sources */,
@@ -471,6 +481,8 @@
 				34B76EBC2A899CDF00AB4035 /* LottieView.swift in Sources */,
 				3401C4CE2A8A6EC60014D7C5 /* GalleryViewModel.swift in Sources */,
 				340BE18F2A89714A005C0976 /* PersistenceService+Dependencies.swift in Sources */,
+				34933CC02A8BFA8C00F4054A /* ControlButton.swift in Sources */,
+				34E830BE2A8BD0B300168A51 /* CustomSlider.swift in Sources */,
 				3441DD092A8AE36C009A33AE /* VideoFeedView.swift in Sources */,
 				3426BD1F2A894B5C00FB3B68 /* CameraTokApp.swift in Sources */,
 				343D22C12A8AD93E00CAA663 /* VideoPlayerView.swift in Sources */,
@@ -754,7 +766,7 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		340BE18B2A8970D5005C0976 /* XCRemoteSwiftPackageReference "swift-dependencies" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:pointfreeco/swift-dependencies.git";
+			repositoryURL = "https://github.com/pointfreeco/swift-dependencies.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
