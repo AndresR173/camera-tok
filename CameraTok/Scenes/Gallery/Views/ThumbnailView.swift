@@ -17,23 +17,22 @@ struct ThumbnailView: View {
 
     var body: some View {
         GeometryReader { proxy in
-            thumbnail()
-                .frame(
-                    width: proxy.size.width
-                )
-                .clipped()
+            VStack {
+                Spacer()
+                thumbnail()
+                    .aspectRatio(contentMode: .fit)
+                Spacer()
+            }
+            .frame(
+                width: proxy.size.width
+            )
+            .clipped()
         }
         .aspectRatio(0.5, contentMode: .fit)
+        .background(.black)
         .task {
-            let url = asset.url
-            let asset: AVAsset = AVAsset(url: url)
-            let imageGenerator = AVAssetImageGenerator(asset: asset)
-
-            do {
-                let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60), actualTime: nil)
-                image = UIImage(cgImage: thumbnailImage)
-            } catch {
-                image = nil
+            if let thumbnail = asset.thumbnail {
+                image = UIImage(cgImage: thumbnail)
             }
         }
         .onDisappear {
@@ -56,6 +55,6 @@ struct ThumbnailView: View {
 struct ThumbnailView_Previews: PreviewProvider {
     static var previews: some View {
         let url = Bundle.main.url(forResource: "video_test", withExtension: "mov")!
-        ThumbnailView(asset: .init(url: url))
+        ThumbnailView(asset: .init(url: url, thumbnail: nil))
     }
 }

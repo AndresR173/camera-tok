@@ -25,7 +25,7 @@ struct VideoFeedView: View {
                             url: video.url
                         )
                         .frame(
-                            width: geometry.size.height,
+                            width: geometry.size.width,
                             height: geometry.size.height
                         )
                     }
@@ -38,7 +38,6 @@ struct VideoFeedView: View {
                 .gesture(
                     DragGesture(minimumDistance: 0)
                         .updating(self.$translation) { value, state, _ in
-                            dump(value)
                             state = value.translation.height
                         }
                         .onEnded { value in
@@ -90,6 +89,9 @@ extension VideoFeedView {
 
 struct VideoFeed_Previews: PreviewProvider {
     static var previews: some View {
-        VideoFeedView(videos: [], currentIndex: 0)
+        let url = Bundle.main.url(forResource: "video_test", withExtension: "mov")!
+        VideoFeedView(videos: [
+            .init(url: url, thumbnail: nil)
+        ], currentIndex: 0)
     }
 }

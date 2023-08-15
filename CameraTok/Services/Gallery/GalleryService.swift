@@ -90,7 +90,8 @@ final class GalleryService: GalleryServiceApi {
             }
             let newAssets: [VideoAsset] = urls.compactMap {
                 guard let url = $0 else { return nil }
-                return VideoAsset(url: url)
+                let image = generateThumbnail(forURL: url)
+                return VideoAsset(url: url, thumbnail: image)
             }
             assets.append(contentsOf: newAssets)
             return assets
@@ -98,6 +99,19 @@ final class GalleryService: GalleryServiceApi {
             throw GalleryServiceError.permissionsRequired
         }
 
+    }
+
+    private func generateThumbnail(forURL url: URL) -> CGImage? {
+        let url = url
+        let asset: AVAsset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+
+        do {
+            let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60), actualTime: nil)
+            return thumbnailImage
+        } catch {
+            return nil
+        }
     }
 
     private func getAssetURL(_ asset: PHAsset) async -> URL? {

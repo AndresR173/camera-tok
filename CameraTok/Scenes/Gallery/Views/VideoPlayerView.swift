@@ -37,6 +37,7 @@ struct VideoPlayerView: View {
                     viewModel.pause()
                 }
         } else {
+            ProgressView()
         }
     }
 }

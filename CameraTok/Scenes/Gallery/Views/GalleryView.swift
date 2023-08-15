@@ -13,7 +13,6 @@ struct GalleryView: View {
 
     var body: some View {
         buildGalleryView()
-            .padding(.horizontal)
             .task {
                 await viewModel.refreshGallery()
             }
@@ -39,10 +38,10 @@ extension GalleryView {
         ScrollView(.vertical) {
             LazyVGrid(
                 columns: Array(
-                    repeating: .init(.adaptive(minimum: 100), spacing: 8),
+                    repeating: .init(.adaptive(minimum: 100), spacing: 0),
                     count: 3),
                 alignment: .center,
-                spacing: 8
+                spacing: 0
             ) {
                 ForEach($viewModel.videos, id: \.self) { asset in
                     ThumbnailView(asset: asset.wrappedValue)

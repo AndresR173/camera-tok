@@ -45,7 +45,6 @@
 		34B76ECB2A89AC1200AB4035 /* GalleryService+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B76ECA2A89AC1200AB4035 /* GalleryService+Dependencies.swift */; };
 		34F7766F2A8AE8A5004AEBCF /* VideoAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F7766E2A8AE8A5004AEBCF /* VideoAsset.swift */; };
 		34F776732A8AEC2B004AEBCF /* video_test.mov in Resources */ = {isa = PBXBuildFile; fileRef = 34F776722A8AEC2B004AEBCF /* video_test.mov */; };
-		34F776772A8B13A0004AEBCF /* UIScreen+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F776762A8B13A0004AEBCF /* UIScreen+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +98,6 @@
 		34B76ECA2A89AC1200AB4035 /* GalleryService+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GalleryService+Dependencies.swift"; sourceTree = "<group>"; };
 		34F7766E2A8AE8A5004AEBCF /* VideoAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoAsset.swift; sourceTree = "<group>"; };
 		34F776722A8AEC2B004AEBCF /* video_test.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video_test.mov; sourceTree = "<group>"; };
-		34F776762A8B13A0004AEBCF /* UIScreen+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,27 +152,19 @@
 		3401C4D12A8A9D900014D7C5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3401C4D22A8A9DA20014D7C5 /* SceneStatus.swift */,
 				3401C4D42A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift */,
+				3401C4D22A8A9DA20014D7C5 /* SceneStatus.swift */,
 				34F7766E2A8AE8A5004AEBCF /* VideoAsset.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		3401C4D82A8AA75C0014D7C5 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				34F776762A8B13A0004AEBCF /* UIScreen+Extensions.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		340BE17D2A896714005C0976 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				34B76EB62A899C6800AB4035 /* Animations */,
-				34B76EA92A899BFE00AB4035 /* Fonts */,
 				3426BD222A894B5E00FB3B68 /* Assets.xcassets */,
+				34B76EA92A899BFE00AB4035 /* Fonts */,
 				34B76EA22A8999F800AB4035 /* Localizable.strings */,
 			);
 			path = Resources;
@@ -301,9 +291,8 @@
 		34B76EB62A899C6800AB4035 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				34B76EBF2A899E1500AB4035 /* gallery_animation.json */,
 				34B76EB72A899C7900AB4035 /* camera_animation.json */,
-				34B76EC12A899E2A00AB4035 /* Animations.swift */,
+				34B76EBF2A899E1500AB4035 /* gallery_animation.json */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -329,9 +318,9 @@
 		34CFE7322A89605B0073803B /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				340BE17F2A896895005C0976 /* OnboardingView.swift */,
-				34B76EB92A899C9300AB4035 /* IntroOboardingView.swift */,
 				34B76EBD2A899D7500AB4035 /* GalleryOnboardingView.swift */,
+				34B76EB92A899C9300AB4035 /* IntroOboardingView.swift */,
+				340BE17F2A896895005C0976 /* OnboardingView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -339,7 +328,7 @@
 		34CFE7332A8960660073803B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				3401C4D82A8AA75C0014D7C5 /* Extensions */,
+				34B76EC12A899E2A00AB4035 /* Animations.swift */,
 				3470C9252A897C5700BD1478 /* CameraTok.xctestplan */,
 			);
 			path = Utils;
@@ -475,7 +464,6 @@
 				3470C9282A89812600BD1478 /* ContentView.swift in Sources */,
 				3401C4D52A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift in Sources */,
 				340BE1842A8968CB005C0976 /* PersistenceService.swift in Sources */,
-				34F776772A8B13A0004AEBCF /* UIScreen+Extensions.swift in Sources */,
 				34B76EBA2A899C9300AB4035 /* IntroOboardingView.swift in Sources */,
 				34B76EC92A89A65800AB4035 /* GalleryService.swift in Sources */,
 				3401C4D02A8A8A570014D7C5 /* ThumbnailView.swift in Sources */,

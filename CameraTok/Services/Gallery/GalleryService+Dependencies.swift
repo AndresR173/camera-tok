@@ -23,7 +23,7 @@ enum GalleryServiceDependencyKey: DependencyKey {
                 throw error
             } else {
                 let url = Bundle.main.url(forResource: "video_test", withExtension: "mov")!
-                return Array(repeating: (), count: 10).map { .init(url: url) }
+                return Array(repeating: (), count: 10).map { .init(url: url, thumbnail: nil) }
             }
         }
 
