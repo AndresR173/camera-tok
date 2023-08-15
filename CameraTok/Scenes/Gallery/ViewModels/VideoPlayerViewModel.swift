@@ -6,6 +6,7 @@
 //
 
 import AVKit
+import Dependencies
 import Foundation
 
 final class VideoPlayerViewModel: ObservableObject {
@@ -13,6 +14,9 @@ final class VideoPlayerViewModel: ObservableObject {
     @Published var isMuted: Bool = false
     @Published var isPlayerPaused: Bool = true
     @Published var seekPos: Double = 0.0
+    @Published var volume: Double = 0.0
+
+    @Dependency(\.avService) private var avService: AVServiceAPI
 
     var currentItem: AVPlayerItem? {
         player?.currentItem
@@ -52,18 +56,27 @@ final class VideoPlayerViewModel: ObservableObject {
             queue: nil
         ) { time in
             guard let item = self.player?.currentItem else {
-              return
+                return
             }
             self.seekPos = time.seconds / item.duration.seconds
-          }
+        }
+
+        avService.setDelegate(self)
     }
 
     func toggleVolume() {
+        guard avService.currentVolume > 0 else { return }
         player?.isMuted.toggle()
         isMuted = player?.isMuted ?? false
     }
 
     func seek(to time: CMTime) {
         player?.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
+    }
+}
+
+extension VideoPlayerViewModel: AVServiceDelegate {
+    func updateVolume(to volume: Float) {
+        isMuted = volume == 0
     }
 }
