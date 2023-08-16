@@ -52,7 +52,7 @@ extension GalleryView {
             }
             .fullScreenCover(item: $videoAsset) { asset in
                 VideoFeedView(
-                    videos: viewModel.videos,
+                    videos: $viewModel.videos,
                     currentIndex: viewModel.videos.firstIndex(where: { $0.id == asset.id }) ?? 0
                 )
             }

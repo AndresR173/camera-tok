@@ -9,7 +9,7 @@ import SwiftUI
 
 struct VideoFeedView: View {
     @Environment(\.dismiss) var dismiss
-    let videos: [VideoAsset]
+    @Binding var videos: [VideoAsset]
     private var pageCount: Int {
         videos.count
     }
@@ -20,9 +20,9 @@ struct VideoFeedView: View {
         GeometryReader { geometry in
             ScrollView(showsIndicators: false) {
                 LazyVStack(spacing: 0) {
-                    ForEach(Array(videos.enumerated()), id: \.offset) { index, video in
+                    ForEach(Array($videos.enumerated()), id: \.offset) { index, $video in
                         VideoPlayerView(
-                            asset: video,
+                            asset: $video,
                             videoIndex: index,
                             currentIndex: $currentIndex
                         )
@@ -91,9 +91,14 @@ extension VideoFeedView {
 struct VideoFeed_Previews: PreviewProvider {
     static var previews: some View {
         let url = Bundle.main.url(forResource: "video_test", withExtension: "mov")!
-        VideoFeedView(videos: [
-            .init(id: UUID().uuidString, url: url),
-            .init(id: UUID().uuidString, url: url)
-        ], currentIndex: 0)
+        let metadata = VideoAsset.Metadata(
+            location: nil,
+            creationDate: .now,
+            duration: 10_450.0
+        )
+        VideoFeedView(videos: .constant([
+            .init(id: UUID().uuidString, url: url, metadata: metadata),
+            .init(id: UUID().uuidString, url: url, metadata: metadata)
+        ]), currentIndex: 0)
     }
 }

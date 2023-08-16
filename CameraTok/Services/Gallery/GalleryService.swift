@@ -89,7 +89,21 @@ final class GalleryService: GalleryServiceApi {
                 if let url = await getAssetURL(asset) {
                     let image = generateThumbnail(forURL: url)
                     let liked = likedAssets[asset.localIdentifier] ?? false
-                    newAssets.append(VideoAsset(id: asset.localIdentifier, url: url, thumbnail: image, liked: liked))
+
+                    let metadata = VideoAsset.Metadata(
+                        location: asset.location,
+                        creationDate: asset.creationDate,
+                        duration: asset.duration
+                    )
+                    newAssets.append(
+                        VideoAsset(
+                            id: asset.localIdentifier,
+                            url: url,
+                            thumbnail: image,
+                            liked: liked,
+                            metadata: metadata
+                        )
+                    )
                 }
             }
 

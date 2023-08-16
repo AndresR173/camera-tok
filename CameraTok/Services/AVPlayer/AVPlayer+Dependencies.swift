@@ -9,10 +9,10 @@ import AVKit
 import Dependencies
 import Foundation
 
-enum AVPlayerDependencyKey: DependencyKey {
-    static let liveValue: AVPlayer = AVPlayer()
-    static let previewValue: AVPlayer = MockAVPlayer()
-    static let testValue: AVPlayer = MockAVPlayer()
+enum AVPlayerGeneratorDependencyKey: DependencyKey {
+    static let liveValue: AVPlayerGenerator = AVPlayerGenerator { AVPlayer() }
+    static let previewValue: AVPlayerGenerator = AVPlayerGenerator { MockAVPlayer() }
+    static let testValue: AVPlayerGenerator = AVPlayerGenerator { MockAVPlayer() }
 
     final class MockAVPlayer: AVPlayer {
         var playCalled: Bool = false
@@ -45,8 +45,8 @@ enum AVPlayerDependencyKey: DependencyKey {
 }
 
 extension DependencyValues {
-    var avPlayer: AVPlayer {
-        get { self[AVPlayerDependencyKey.self] }
-        set { self[AVPlayerDependencyKey.self] = newValue }
+    var avPlayer: AVPlayerGenerator {
+        get { self[AVPlayerGeneratorDependencyKey.self] }
+        set { self[AVPlayerGeneratorDependencyKey.self] = newValue }
     }
 }

@@ -54,6 +54,17 @@ struct ThumbnailView: View {
 struct ThumbnailView_Previews: PreviewProvider {
     static var previews: some View {
         let url = Bundle.main.url(forResource: "video_test", withExtension: "mov")!
-        ThumbnailView(asset: .init(id: UUID().uuidString, url: url))
+        let metadata = VideoAsset.Metadata(
+            location: nil,
+            creationDate: .now,
+            duration: 10_450.0
+        )
+        ThumbnailView(
+            asset: .init(
+                id: UUID().uuidString,
+                url: url,
+                metadata: metadata
+            )
+        )
     }
 }

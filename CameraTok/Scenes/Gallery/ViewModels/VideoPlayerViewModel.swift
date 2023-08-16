@@ -17,7 +17,9 @@ final class VideoPlayerViewModel: ObservableObject {
     @Published var volume: Double = 0.0
 
     @Dependency(\.avService) private var avService: AVServiceAPI
-    @Dependency(\.avPlayer) private var avPlayer: AVPlayer
+    @Dependency(\.avPlayer) private var avPlayer
+    @Dependency(\.uuid) var uuid
+
     @UserDefaultsWrapper(key: "likedAssets", defaultValue: [:])
     var likedAssets: [String: Bool]
 
@@ -48,10 +50,9 @@ final class VideoPlayerViewModel: ObservableObject {
 
     func loadVideo(_ url: URL) {
         let item = AVPlayerItem(url: url)
-        player = avPlayer
+        player = avPlayer()
         player?.replaceCurrentItem(with: item)
         player?.isMuted = avService.isMuted
-        dump(avService.isMuted)
         isMuted = player?.isMuted ?? false
 
         player?.addPeriodicTimeObserver(
@@ -78,8 +79,7 @@ final class VideoPlayerViewModel: ObservableObject {
         player?.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
     }
 
-    func changeLikeStatus(for asset: inout VideoAsset) {
-        asset.liked.toggle()
+    func changeLikeStatus(for asset: VideoAsset) {
         likedAssets[asset.id] = asset.liked
     }
 }

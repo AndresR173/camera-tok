@@ -23,7 +23,12 @@ enum GalleryServiceDependencyKey: DependencyKey {
         var validateAuthorizationCalled = false
         var requestAuhtorizationCalled = false
 
-        lazy var response: [VideoAsset] = Array(repeating: (), count: 10).map { .init(id: UUID().uuidString, url: url) }
+        let metadata = VideoAsset.Metadata(
+            location: nil,
+            creationDate: .now,
+            duration: 10_450.0
+        )
+        lazy var response: [VideoAsset] = Array(repeating: (), count: 10).map { .init(id: UUID().uuidString, url: url, metadata: metadata) }
 
         func fetchVideos() async throws -> [VideoAsset] {
             if let error {
