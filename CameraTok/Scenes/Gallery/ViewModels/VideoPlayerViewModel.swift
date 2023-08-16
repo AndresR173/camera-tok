@@ -17,14 +17,11 @@ final class VideoPlayerViewModel: ObservableObject {
     @Published var volume: Double = 0.0
 
     @Dependency(\.avService) private var avService: AVServiceAPI
+    @Dependency(\.avPlayer) private var avPlayer: AVPlayer
     @UserDefaultsWrapper(key: "likedAssets", defaultValue: [:])
     var likedAssets: [String: Bool]
 
-    var currentItem: AVPlayerItem? {
-        player?.currentItem
-    }
-
-    func toogleVideoPlayback() {
+    func toggleVideoPlayback() {
         if isPlayerPaused {
             player?.play()
         } else {
@@ -50,10 +47,11 @@ final class VideoPlayerViewModel: ObservableObject {
     }
 
     func loadVideo(_ url: URL) {
-        player = AVPlayer(url: url)
+        let item = AVPlayerItem(url: url)
+        player = avPlayer
+        player?.replaceCurrentItem(with: item)
         player?.isMuted = avService.isMuted
         dump(avService.isMuted)
-        dump(player?.isMuted)
         isMuted = player?.isMuted ?? false
 
         player?.addPeriodicTimeObserver(

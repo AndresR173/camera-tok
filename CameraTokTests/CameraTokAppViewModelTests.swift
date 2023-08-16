@@ -30,5 +30,4 @@ final class CameraTokAppViewModelTests: XCTestCase {
         })
         XCTAssertEqual(sut.onboardingStatus, .done)
     }
-
 }

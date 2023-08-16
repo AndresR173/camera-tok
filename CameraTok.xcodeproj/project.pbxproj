@@ -21,6 +21,8 @@
 		3415E6D02A8C3B1F00B25A09 /* AVService+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415E6CF2A8C3B1F00B25A09 /* AVService+Dependencies.swift */; };
 		3415E6D22A8C44C200B25A09 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415E6D12A8C44C200B25A09 /* LikeButton.swift */; };
 		3415E6D42A8C4B4800B25A09 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415E6D32A8C4B4800B25A09 /* UserDefaultsWrapper.swift */; };
+		3415E6D62A8C5CCA00B25A09 /* VideoPlayerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415E6D52A8C5CCA00B25A09 /* VideoPlayerViewModelTests.swift */; };
+		3415E6D92A8C5EE400B25A09 /* AVPlayer+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415E6D82A8C5EE400B25A09 /* AVPlayer+Dependencies.swift */; };
 		3426BD1F2A894B5C00FB3B68 /* CameraTokApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3426BD1E2A894B5C00FB3B68 /* CameraTokApp.swift */; };
 		3426BD232A894B5E00FB3B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3426BD222A894B5E00FB3B68 /* Assets.xcassets */; };
 		3426BD262A894B5E00FB3B68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3426BD252A894B5E00FB3B68 /* Preview Assets.xcassets */; };
@@ -79,6 +81,8 @@
 		3415E6CF2A8C3B1F00B25A09 /* AVService+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVService+Dependencies.swift"; sourceTree = "<group>"; };
 		3415E6D12A8C44C200B25A09 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		3415E6D32A8C4B4800B25A09 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		3415E6D52A8C5CCA00B25A09 /* VideoPlayerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewModelTests.swift; sourceTree = "<group>"; };
+		3415E6D82A8C5EE400B25A09 /* AVPlayer+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Dependencies.swift"; sourceTree = "<group>"; };
 		3426BD1B2A894B5C00FB3B68 /* CameraTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3426BD1E2A894B5C00FB3B68 /* CameraTokApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTokApp.swift; sourceTree = "<group>"; };
 		3426BD222A894B5E00FB3B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 		340BE1822A8968B8005C0976 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3415E6D72A8C5E2A00B25A09 /* AVPlayer */,
 				3415E6CC2A8C363500B25A09 /* AVService */,
 				34B76EC72A89A64C00AB4035 /* Gallery */,
 				34B76EC52A89A62700AB4035 /* Persistence */,
@@ -237,6 +242,14 @@
 				3415E6CF2A8C3B1F00B25A09 /* AVService+Dependencies.swift */,
 			);
 			path = AVService;
+			sourceTree = "<group>";
+		};
+		3415E6D72A8C5E2A00B25A09 /* AVPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				3415E6D82A8C5EE400B25A09 /* AVPlayer+Dependencies.swift */,
+			);
+			path = AVPlayer;
 			sourceTree = "<group>";
 		};
 		3426BD122A894B5C00FB3B68 = {
@@ -286,6 +299,7 @@
 			children = (
 				340BE1902A897648005C0976 /* CameraTokAppViewModelTests.swift */,
 				3401C4D62A8A9E9D0014D7C5 /* GalleryViewModelTests.swift */,
+				3415E6D52A8C5CCA00B25A09 /* VideoPlayerViewModelTests.swift */,
 			);
 			path = CameraTokTests;
 			sourceTree = "<group>";
@@ -480,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3415E6D92A8C5EE400B25A09 /* AVPlayer+Dependencies.swift in Sources */,
 				343D22C62A8ADA6E00CAA663 /* VideoPlayerViewModel.swift in Sources */,
 				3401C4D32A8A9DA20014D7C5 /* SceneStatus.swift in Sources */,
 				34B76EB22A899C1900AB4035 /* AppFont.swift in Sources */,
@@ -518,6 +533,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3470C9242A897BEE00BD1478 /* CameraTokAppViewModelTests.swift in Sources */,
+				3415E6D62A8C5CCA00B25A09 /* VideoPlayerViewModelTests.swift in Sources */,
 				3401C4D72A8A9E9D0014D7C5 /* GalleryViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

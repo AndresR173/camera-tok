@@ -18,31 +18,52 @@ final class GalleryViewModelTests: XCTestCase {
         try super.setUpWithError()
         mockGalleryService = GalleryServiceDependencyKey.MockGalleryService()
     }
+}
 
+extension GalleryViewModelTests {
     func testInitialState() async throws {
         let sut = GalleryViewModel()
         XCTAssertEqual(sut.viewStatus, SceneStatus.loading)
     }
 
     func testServiceError() async throws {
-        mockGalleryService.error = .assetNotFound
+        mockGalleryService.error = GalleryServiceError.assetNotFound
         let sut = withDependencies({
             $0.galleryService = mockGalleryService
         }, operation: {
             GalleryViewModel()
         })
+
         await sut.refreshGallery()
         XCTAssertEqual(sut.viewStatus, .error(NSLocalizedString("error.asset_not_found", comment: "")))
+
+        mockGalleryService.error = NSError(domain: "", code: 0)
+
+        await sut.refreshGallery()
+        XCTAssertEqual(sut.viewStatus, .error(NSLocalizedString("error.generic", comment: "")))
     }
 
     func testGalleryServiceSuccess() async throws {
         let sut = withDependencies {
             $0.galleryService = GalleryServiceDependencyKey.MockGalleryService()
-            $0.uuid = .incrementing
         } operation: {
             GalleryViewModel()
         }
         await sut.refreshGallery()
         XCTAssertEqual(sut.viewStatus, .loaded)
+    }
+
+    func testRefreshGallery() async throws {
+        mockGalleryService.authorizationStatus = .notDetermined
+        mockGalleryService.response = []
+        let sut = withDependencies {
+            $0.galleryService = mockGalleryService
+        } operation: {
+            GalleryViewModel()
+        }
+        await sut.refreshGallery()
+
+        XCTAssertTrue(mockGalleryService.validateAuthorizationCalled)
+        XCTAssertEqual(sut.viewStatus, .empty)
     }
 }

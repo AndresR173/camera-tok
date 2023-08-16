@@ -25,11 +25,11 @@ struct PlayerControlsView : View {
                 ControlButton(
                     image: viewModel.isPlayerPaused ? "play.fill" : "pause.fill"
                 ) {
-                    self.viewModel.toogleVideoPlayback()
+                    self.viewModel.toggleVideoPlayback()
                 }
                 .padding(.horizontal, 8)
                 CustomSlider(percentage: $viewModel.seekPos) {
-                    guard let item = self.viewModel.currentItem else {
+                    guard let item = self.viewModel.player?.currentItem else {
                         return
                     }
                     let targetTime = viewModel.seekPos * item.duration.seconds

@@ -23,7 +23,7 @@ enum AVServiceDependencyKey: DependencyKey {
         func setDelegate(_ delegate: AVServiceDelegate?) {
             self.avDelegate = delegate
         }
-        var currentVolume: Float = 0
+        var currentVolume: Float = 0.3
         weak var avDelegate: AVServiceDelegate?
     }
 }
