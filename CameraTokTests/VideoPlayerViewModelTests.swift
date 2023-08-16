@@ -13,17 +13,19 @@ import AVKit
 
 final class VideoPlayerViewModelTests: XCTestCase {
     var mockAVService: AVServiceDependencyKey.MockAVService!
-    var mockAVPlayer: AVPlayerDependencyKey.MockAVPlayer!
+    var mockAVPlayer: AVPlayerGeneratorDependencyKey.MockAVPlayer!
 
     var sut: VideoPlayerViewModel!
 
     override func setUpWithError() throws {
         try super.setUpWithError()
         mockAVService = AVServiceDependencyKey.MockAVService()
-        mockAVPlayer = AVPlayerDependencyKey.MockAVPlayer()
+        mockAVPlayer = AVPlayerGeneratorDependencyKey.MockAVPlayer()
 
         sut = withDependencies({
-            $0.avPlayer = mockAVPlayer
+            $0.avPlayer = .init({
+                self.mockAVPlayer
+            })
         }, operation: {
             VideoPlayerViewModel()
         })

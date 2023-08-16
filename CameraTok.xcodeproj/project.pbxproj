@@ -25,7 +25,7 @@
 		3415E6D22A8C44C200B25A09 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415E6D12A8C44C200B25A09 /* LikeButton.swift */; };
 		3415E6D42A8C4B4800B25A09 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415E6D32A8C4B4800B25A09 /* UserDefaultsWrapper.swift */; };
 		3415E6D62A8C5CCA00B25A09 /* VideoPlayerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415E6D52A8C5CCA00B25A09 /* VideoPlayerViewModelTests.swift */; };
-		3415E6D92A8C5EE400B25A09 /* AVPlayer+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415E6D82A8C5EE400B25A09 /* AVPlayer+Dependencies.swift */; };
+		3415E6D92A8C5EE400B25A09 /* AVPlayerGenerator+Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3415E6D82A8C5EE400B25A09 /* AVPlayerGenerator+Dependencies.swift */; };
 		3426BD1F2A894B5C00FB3B68 /* CameraTokApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3426BD1E2A894B5C00FB3B68 /* CameraTokApp.swift */; };
 		3426BD232A894B5E00FB3B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3426BD222A894B5E00FB3B68 /* Assets.xcassets */; };
 		3426BD262A894B5E00FB3B68 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3426BD252A894B5E00FB3B68 /* Preview Assets.xcassets */; };
@@ -88,7 +88,7 @@
 		3415E6D12A8C44C200B25A09 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		3415E6D32A8C4B4800B25A09 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		3415E6D52A8C5CCA00B25A09 /* VideoPlayerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewModelTests.swift; sourceTree = "<group>"; };
-		3415E6D82A8C5EE400B25A09 /* AVPlayer+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Dependencies.swift"; sourceTree = "<group>"; };
+		3415E6D82A8C5EE400B25A09 /* AVPlayerGenerator+Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayerGenerator+Dependencies.swift"; sourceTree = "<group>"; };
 		3426BD1B2A894B5C00FB3B68 /* CameraTok.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraTok.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3426BD1E2A894B5C00FB3B68 /* CameraTokApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTokApp.swift; sourceTree = "<group>"; };
 		3426BD222A894B5E00FB3B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 		3415E6D72A8C5E2A00B25A09 /* AVPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				3415E6D82A8C5EE400B25A09 /* AVPlayer+Dependencies.swift */,
+				3415E6D82A8C5EE400B25A09 /* AVPlayerGenerator+Dependencies.swift */,
 				3407661E2A8D583300160359 /* AVPlayerGenerator.swift */,
 			);
 			path = AVPlayer;
@@ -503,7 +503,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3415E6D92A8C5EE400B25A09 /* AVPlayer+Dependencies.swift in Sources */,
+				3415E6D92A8C5EE400B25A09 /* AVPlayerGenerator+Dependencies.swift in Sources */,
 				343D22C62A8ADA6E00CAA663 /* VideoPlayerViewModel.swift in Sources */,
 				3401C4D32A8A9DA20014D7C5 /* SceneStatus.swift in Sources */,
 				34B76EB22A899C1900AB4035 /* AppFont.swift in Sources */,

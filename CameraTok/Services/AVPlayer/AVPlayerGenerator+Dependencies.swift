@@ -19,6 +19,7 @@ enum AVPlayerGeneratorDependencyKey: DependencyKey {
         var pauseCalled: Bool = false
         var time: CMTime = .zero
         var avPlaverItem: AVPlayerItem?
+        
         override var currentItem: AVPlayerItem? {
             avPlaverItem
         }
