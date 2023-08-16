@@ -17,6 +17,8 @@ final class VideoPlayerViewModel: ObservableObject {
     @Published var volume: Double = 0.0
 
     @Dependency(\.avService) private var avService: AVServiceAPI
+    @UserDefaultsWrapper(key: "likedAssets", defaultValue: [:])
+    var likedAssets: [String: Bool]
 
     var currentItem: AVPlayerItem? {
         player?.currentItem
@@ -49,6 +51,9 @@ final class VideoPlayerViewModel: ObservableObject {
 
     func loadVideo(_ url: URL) {
         player = AVPlayer(url: url)
+        player?.isMuted = avService.isMuted
+        dump(avService.isMuted)
+        dump(player?.isMuted)
         isMuted = player?.isMuted ?? false
 
         player?.addPeriodicTimeObserver(
@@ -67,16 +72,24 @@ final class VideoPlayerViewModel: ObservableObject {
     func toggleVolume() {
         guard avService.currentVolume > 0 else { return }
         player?.isMuted.toggle()
+        avService.updateMutedStatus(isMuted: player?.isMuted ?? false)
         isMuted = player?.isMuted ?? false
     }
 
     func seek(to time: CMTime) {
         player?.seek(to: time, toleranceBefore: .zero, toleranceAfter: .zero)
     }
+
+    func changeLikeStatus(for asset: inout VideoAsset) {
+        asset.liked.toggle()
+        likedAssets[asset.id] = asset.liked
+    }
 }
 
 extension VideoPlayerViewModel: AVServiceDelegate {
     func updateVolume(to volume: Float) {
         isMuted = volume == 0
+        avService.updateMutedStatus(isMuted: isMuted)
+        player?.isMuted = isMuted
     }
 }

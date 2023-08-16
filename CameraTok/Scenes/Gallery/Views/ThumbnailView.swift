@@ -13,7 +13,6 @@ import Photos
 struct ThumbnailView: View {
     let asset: VideoAsset
     @State private var image: UIImage?
-    @Dependency(\.galleryService) private var service
 
     var body: some View {
         GeometryReader { proxy in
@@ -55,6 +54,6 @@ struct ThumbnailView: View {
 struct ThumbnailView_Previews: PreviewProvider {
     static var previews: some View {
         let url = Bundle.main.url(forResource: "video_test", withExtension: "mov")!
-        ThumbnailView(asset: .init(url: url, thumbnail: nil))
+        ThumbnailView(asset: .init(id: UUID().uuidString, url: url))
     }
 }

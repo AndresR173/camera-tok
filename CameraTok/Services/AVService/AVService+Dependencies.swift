@@ -14,6 +14,12 @@ enum AVServiceDependencyKey: DependencyKey {
     static let testValue: AVServiceAPI = MockAVService()
 
     class MockAVService: AVServiceAPI {
+        var isMuted: Bool = true
+
+        func updateMutedStatus(isMuted: Bool) {
+            self.isMuted = isMuted
+        }
+
         func setDelegate(_ delegate: AVServiceDelegate?) {
             self.avDelegate = delegate
         }

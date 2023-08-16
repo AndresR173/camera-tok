@@ -53,6 +53,8 @@ final class GalleryService: GalleryServiceApi {
     }
     private var phAuthorizationStatus: PHAuthorizationStatus = .notDetermined
     private var assets: [VideoAsset] = []
+    @UserDefaultsWrapper(key: "likedAssets", defaultValue: [:])
+    var likedAssets: [String: Bool]
 
     func requestAuthorization() async {
         await withCheckedContinuation { continuation in
@@ -70,8 +72,6 @@ final class GalleryService: GalleryServiceApi {
     func fetchVideos()  async throws -> [VideoAsset] {
         switch await authorizationStatus {
         case .authorized, .limited:
-            @Dependency(\.uuid) var uuid
-
             let fetchOptions = PHFetchOptions()
             fetchOptions.includeHiddenAssets = false
             fetchOptions.fetchLimit = 15
@@ -83,16 +83,16 @@ final class GalleryService: GalleryServiceApi {
             fetchResult.enumerateObjects { asset, index, stop in
                 phAssets.append(asset)
             }
-            var urls: [URL?] = []
+
+            var newAssets: [VideoAsset] = []
             for asset in phAssets {
-                let url = await getAssetURL(asset)
-                urls.append(url)
+                if let url = await getAssetURL(asset) {
+                    let image = generateThumbnail(forURL: url)
+                    let liked = likedAssets[asset.localIdentifier] ?? false
+                    newAssets.append(VideoAsset(id: asset.localIdentifier, url: url, thumbnail: image, liked: liked))
+                }
             }
-            let newAssets: [VideoAsset] = urls.compactMap {
-                guard let url = $0 else { return nil }
-                let image = generateThumbnail(forURL: url)
-                return VideoAsset(url: url, thumbnail: image)
-            }
+
             assets.append(contentsOf: newAssets)
             return assets
         default:

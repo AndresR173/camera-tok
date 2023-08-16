@@ -32,7 +32,11 @@ enum PersistenceServiceDependencyKey: DependencyKey {
             container[key] as? [String: Any]
         }
 
-        func set(_ value: Any, forKey key: String) {
+        func getData(forKey key: String) -> Data? {
+            container[key] as? Data
+        }
+
+        func set(_ value: Any?, forKey key: String) {
             container[key] = value
         }
     }

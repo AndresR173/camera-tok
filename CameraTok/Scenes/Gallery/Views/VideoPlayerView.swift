@@ -9,7 +9,7 @@ import AVKit
 import SwiftUI
 
 struct VideoPlayerView: View {
-    let url: URL
+    @State var asset: VideoAsset
     let videoIndex: Int
     @Binding var currentIndex: Int
     @StateObject private var viewModel = VideoPlayerViewModel()
@@ -22,7 +22,7 @@ struct VideoPlayerView: View {
         }
         .environmentObject(viewModel)
         .task {
-            viewModel.loadVideo(url)
+            viewModel.loadVideo(asset.url)
         }
     }
 
@@ -47,6 +47,16 @@ struct VideoPlayerView: View {
                             viewModel.stop()
                         }
                     })
+                HStack {
+                    Spacer()
+                    VStack {
+                        LikeButton(isLiked: $asset.liked) {
+                            viewModel.changeLikeStatus(for: &asset)
+                        }
+                            .frame(width: 24, height:  24)
+                    }
+                }
+                .padding(.trailing, 8)
                 PlayerControlsView()
             }
         } else {
@@ -58,6 +68,10 @@ struct VideoPlayerView: View {
 struct VideoPlayerView_Previews: PreviewProvider {
     static var previews: some View {
         let url = Bundle.main.url(forResource: "video_test", withExtension: "mov")!
-        VideoPlayerView(url: url, videoIndex: 1,currentIndex: .constant(1))
+        VideoPlayerView(
+            asset: .init(id: UUID().uuidString, url: url),
+            videoIndex: 1,
+            currentIndex: .constant(1)
+        )
     }
 }

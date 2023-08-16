@@ -12,8 +12,9 @@ protocol PersistenceServiceApi {
     func getBool(forKey key: String) -> Bool
     func getArray(forKey key: String) -> [Any]?
     func getDict(forKey key: String) -> [String: Any]?
+    func getData(forKey key: String) -> Data?
 
-    func set(_ value: Any, forKey key: String)
+    func set(_ value: Any?, forKey key: String)
 }
 
 final class PersistenceService: PersistenceServiceApi {
@@ -35,7 +36,12 @@ final class PersistenceService: PersistenceServiceApi {
         defaults.dictionary(forKey: key)
     }
 
-    func set(_ value: Any, forKey key: String) {
+    func getData(forKey key: String) -> Data? {
+        defaults.data(forKey: key)
+    }
+
+    func set(_ value: Any?, forKey key: String) {
         defaults.setValue(value, forKey: key)
+        defaults.synchronize()
     }
 }

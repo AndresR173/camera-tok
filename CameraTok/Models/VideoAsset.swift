@@ -9,13 +9,15 @@ import CoreGraphics
 import Foundation
 
 struct VideoAsset: Identifiable, Hashable {
-    let id: UUID
+    let id: String
     let url: URL
     let thumbnail: CGImage?
+    var liked: Bool
 
-    init(url: URL, thumbnail: CGImage?) {
+    init(id: String, url: URL, thumbnail: CGImage? = nil, liked: Bool = false) {
+        self.liked = liked
         self.url = url
         self.thumbnail = thumbnail
-        self.id = UUID()
+        self.id = id
     }
 }

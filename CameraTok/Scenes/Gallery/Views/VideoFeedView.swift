@@ -22,7 +22,7 @@ struct VideoFeedView: View {
                 LazyVStack(spacing: 0) {
                     ForEach(Array(videos.enumerated()), id: \.offset) { index, video in
                         VideoPlayerView(
-                            url: video.url,
+                            asset: video,
                             videoIndex: index,
                             currentIndex: $currentIndex
                         )
@@ -92,7 +92,8 @@ struct VideoFeed_Previews: PreviewProvider {
     static var previews: some View {
         let url = Bundle.main.url(forResource: "video_test", withExtension: "mov")!
         VideoFeedView(videos: [
-            .init(url: url, thumbnail: nil)
+            .init(id: UUID().uuidString, url: url),
+            .init(id: UUID().uuidString, url: url)
         ], currentIndex: 0)
     }
 }

@@ -16,6 +16,8 @@ protocol AVServiceDelegate: AnyObject {
 protocol AVServiceAPI {
     func setDelegate(_ delegate: AVServiceDelegate?)
     var currentVolume: Float { get }
+    var isMuted: Bool { get }
+    func updateMutedStatus(isMuted: Bool)
 }
 
 final class AVService: AVServiceAPI {
@@ -23,6 +25,7 @@ final class AVService: AVServiceAPI {
     weak var avDelegate: AVServiceDelegate?
     private var cancellable: AnyCancellable?
     var currentVolume: Float = 0
+    var isMuted: Bool = true
 
     init() {
         do {
@@ -49,5 +52,9 @@ final class AVService: AVServiceAPI {
 
     func setDelegate(_ delegate: AVServiceDelegate?) {
         self.avDelegate = delegate
+    }
+
+    func updateMutedStatus(isMuted: Bool) {
+        self.isMuted = isMuted
     }
 }
