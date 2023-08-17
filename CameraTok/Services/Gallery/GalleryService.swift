@@ -29,7 +29,7 @@ enum GalleryServiceError: LocalizedError {
 protocol GalleryServiceApi {
     var authorizationStatus: GalleryAuthorizationStatus { get async }
     func requestAuthorization() async
-    func fetchVideos() async throws -> [VideoAsset]
+    func fetchVideos(from date: Date) async throws -> [VideoAsset]
     func validateAuthorizationStatus() async
 }
 
@@ -52,7 +52,6 @@ final class GalleryService: GalleryServiceApi {
         }
     }
     private var phAuthorizationStatus: PHAuthorizationStatus = .notDetermined
-    private var assets: [VideoAsset] = []
     @UserDefaultsWrapper(key: "likedAssets", defaultValue: [:])
     var likedAssets: [String: Bool]
 
@@ -69,12 +68,14 @@ final class GalleryService: GalleryServiceApi {
         phAuthorizationStatus = PHPhotoLibrary.authorizationStatus(for: .addOnly)
     }
 
-    func fetchVideos()  async throws -> [VideoAsset] {
+    func fetchVideos(from date: Date)  async throws -> [VideoAsset] {
         switch await authorizationStatus {
         case .authorized, .limited:
             let fetchOptions = PHFetchOptions()
             fetchOptions.includeHiddenAssets = false
             fetchOptions.fetchLimit = 15
+            let datePredicate = NSPredicate(format: "creationDate < %@", date as NSDate)
+            fetchOptions.predicate = datePredicate
             fetchOptions.sortDescriptors = [
                 NSSortDescriptor(key: "creationDate", ascending: false)
             ]
@@ -84,7 +85,7 @@ final class GalleryService: GalleryServiceApi {
                 phAssets.append(asset)
             }
 
-            var newAssets: [VideoAsset] = []
+            var assets: [VideoAsset] = []
             for asset in phAssets {
                 if let url = await getAssetURL(asset) {
                     let image = generateThumbnail(forURL: url)
@@ -95,7 +96,7 @@ final class GalleryService: GalleryServiceApi {
                         creationDate: asset.creationDate,
                         duration: asset.duration
                     )
-                    newAssets.append(
+                    assets.append(
                         VideoAsset(
                             id: asset.localIdentifier,
                             url: url,
@@ -107,18 +108,17 @@ final class GalleryService: GalleryServiceApi {
                 }
             }
 
-            assets.append(contentsOf: newAssets)
             return assets
         default:
             throw GalleryServiceError.permissionsRequired
         }
-
     }
 
     private func generateThumbnail(forURL url: URL) -> CGImage? {
         let url = url
         let asset: AVAsset = AVAsset(url: url)
         let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true
 
         do {
             let thumbnailImage = try imageGenerator.copyCGImage(at: CMTimeMake(value: 1, timescale: 60), actualTime: nil)

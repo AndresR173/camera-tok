@@ -30,7 +30,7 @@ enum GalleryServiceDependencyKey: DependencyKey {
         )
         lazy var response: [VideoAsset] = Array(repeating: (), count: 10).map { .init(id: UUID().uuidString, url: url, metadata: metadata) }
 
-        func fetchVideos() async throws -> [VideoAsset] {
+        func fetchVideos(from date: Date) async throws -> [VideoAsset] {
             if let error {
                 throw error
             } else {

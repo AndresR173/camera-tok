@@ -30,7 +30,8 @@ struct VideoAsset: Identifiable, Hashable {
         self.metatada = metadata
     }
 
-    struct Metadata: Equatable, Hashable {
+    struct Metadata: Equatable, Hashable, Identifiable {
+        let id = UUID()
         let location: CLLocation?
         let creationDate: Date?
         let duration: TimeInterval

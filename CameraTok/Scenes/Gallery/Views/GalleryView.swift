@@ -43,12 +43,17 @@ extension GalleryView {
                 alignment: .center,
                 spacing: 0
             ) {
-                ForEach($viewModel.videos, id: \.self) { asset in
-                    ThumbnailView(asset: asset.wrappedValue)
+                ForEach(Array($viewModel.videos.enumerated()), id: \.offset) { index, $asset in
+                    ThumbnailView(asset: asset)
                         .onTapGesture {
-                            videoAsset = asset.wrappedValue
+                            videoAsset = asset
+                        }.onAppear {
+                            Task {
+                                await viewModel.loadVideosIfNeeded(index: index)
+                            }
                         }
                 }
+
             }
             .fullScreenCover(item: $videoAsset) { asset in
                 VideoFeedView(

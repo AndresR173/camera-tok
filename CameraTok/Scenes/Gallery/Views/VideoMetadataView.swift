@@ -10,7 +10,6 @@ import MapKit
 
 struct VideoMetadataView: View {
     let metadata: VideoAsset.Metadata
-    
 
     var body: some View {
         HStack {
@@ -35,8 +34,12 @@ struct VideoMetadataView: View {
                                     longitudeDelta: 0.5
                                 )
                             )
-                        )
-                    )
+                        ),
+                        showsUserLocation: false,
+                        annotationItems: [metadata]
+                    ) { _ in
+                        MapMarker(coordinate: location.coordinate)
+                    }
                     .frame(
                         minWidth: 200,
                         maxWidth: 500,

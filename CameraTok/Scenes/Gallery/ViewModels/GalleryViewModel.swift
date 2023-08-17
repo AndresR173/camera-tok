@@ -14,14 +14,21 @@ final class GalleryViewModel: ObservableObject {
 
     @Published var videos: [VideoAsset] = []
     @Published var viewStatus: SceneStatus = .loading
+    private var filterDate: Date = .now
+    private var canLoadMore = true
 
     func refreshGallery() async {
         if await galleryService.authorizationStatus == .notDetermined {
             await galleryService.validateAuthorizationStatus()
         }
         do {
-            videos = try await galleryService.fetchVideos()
-            viewStatus = videos.isEmpty ? .empty : .loaded
+            let videos = try await galleryService.fetchVideos(from: filterDate)
+            canLoadMore = videos.count >= 15
+            self.videos.append(contentsOf: videos)
+            if let lastVideo = videos.last {
+                filterDate = lastVideo.metatada.creationDate ?? .now
+            }
+            viewStatus = self.videos.isEmpty ? .empty : .loaded
         } catch {
             if let error = error as? GalleryServiceError {
                 viewStatus = .error(error.localizedDescription)
@@ -29,5 +36,12 @@ final class GalleryViewModel: ObservableObject {
                 viewStatus = .error(NSLocalizedString("error.generic", comment: ""))
             }
         }
+    }
+
+    func loadVideosIfNeeded(index: Int) async {
+        guard index == videos.count - 1, canLoadMore else {
+            return
+        }
+        await refreshGallery()
     }
 }
