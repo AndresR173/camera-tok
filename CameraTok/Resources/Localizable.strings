@@ -13,3 +13,5 @@
 "error.assets_not_found" = "Blank Canvas of Time: Fill it with Your Stories. Dive into Your Gallery to Begin Crafting Your Chronological Journey with CameraTok.";
 "error.permissions_required" = "Capture the Moments that Matter – Please Grant CameraTok Access to Your Gallery. Relive Memories and Customize Your Journey Through Time.";
 "cta.go_to_settings" = "Go to settings";
+"filter" = "Filter";
+"done" = "Done";

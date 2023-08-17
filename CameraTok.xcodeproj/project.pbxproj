@@ -329,11 +329,11 @@
 				3470C9272A89812600BD1478 /* ContentView.swift */,
 				34933CBF2A8BFA8C00F4054A /* ControlButton.swift */,
 				34E830BD2A8BD0B300168A51 /* CustomSlider.swift */,
+				340766242A8DA2FF00160359 /* EmptyState.swift */,
+				3415E6D12A8C44C200B25A09 /* LikeButton.swift */,
 				34B76EBB2A899CDF00AB4035 /* LottieView.swift */,
 				34B76EC32A899EAC00AB4035 /* PrimaryButton.swift */,
-				3415E6D12A8C44C200B25A09 /* LikeButton.swift */,
 				3407661C2A8D53C600160359 /* VSpacer.swift */,
-				340766242A8DA2FF00160359 /* EmptyState.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

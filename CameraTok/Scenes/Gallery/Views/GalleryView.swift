@@ -10,12 +10,20 @@ import SwiftUI
 struct GalleryView: View {
     @StateObject private var viewModel = GalleryViewModel()
     @State private var videoAsset: VideoAsset? = nil
+    @State private var isDatePickerVisible = false
+    @State private var pickerBackgroundColor = Color.clear
+    @State private var selectedDate: Date = .now
 
     var body: some View {
-        buildGalleryView()
-            .task {
-                await viewModel.refreshGallery()
+        ZStack(alignment: .top) {
+            buildGalleryView()
+                .task {
+                    await viewModel.refreshGallery()
             }
+            if viewModel.viewStatus == .loaded {
+                filter
+            }
+        }
     }
 
     @ViewBuilder
@@ -45,6 +53,41 @@ struct GalleryView: View {
 }
 
 extension GalleryView {
+    var filter: some View {
+        VStack {
+            HStack {
+                Spacer()
+                Text(isDatePickerVisible ? LocalizedStringKey("done") : LocalizedStringKey("filter"))
+                    .font(.app(.medium, size: 18))
+                    .foregroundColor(.white)
+                    .onTapGesture {
+                        withAnimation(.easeIn) {
+                            isDatePickerVisible.toggle()
+                            pickerBackgroundColor = isDatePickerVisible ? Color("AppBackgroundColor") : .clear
+                        }
+                    }
+                    .padding(.horizontal , 8)
+                    .padding(.vertical, 4)
+                    .background(isDatePickerVisible ? .clear : .black.opacity(0.4))
+                    .cornerRadius(7)
+            }
+            if isDatePickerVisible {
+                DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .labelsHidden()
+            }
+        }
+        .onChange(of: selectedDate) { newDate in
+            Task {
+                await viewModel.updateGallery(newDate)
+            }
+        }
+        .background(pickerBackgroundColor)
+        .cornerRadius(7)
+        .padding(.all)
+
+    }
+
     var galleryView: some View {
         ScrollView(.vertical) {
             LazyVGrid(

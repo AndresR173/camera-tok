@@ -15,6 +15,7 @@ final class GalleryViewModel: ObservableObject {
     @Published var videos: [VideoAsset] = []
     @Published var viewStatus: SceneStatus = .loading
     private var filterDate: Date = .now
+    private var initialdate: Date = .now
     private var canLoadMore = true
 
     func refreshGallery() async {
@@ -46,6 +47,15 @@ final class GalleryViewModel: ObservableObject {
         guard index == videos.count - 1, canLoadMore else {
             return
         }
+        await refreshGallery()
+    }
+
+    func updateGallery(_ date: Date) async {
+        guard date != initialdate else { return }
+        filterDate = date
+        initialdate = date
+        videos.removeAll()
+        viewStatus = .loading
         await refreshGallery()
     }
 }
