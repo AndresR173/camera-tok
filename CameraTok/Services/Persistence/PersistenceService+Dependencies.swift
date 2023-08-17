@@ -16,20 +16,8 @@ enum PersistenceServiceDependencyKey: DependencyKey {
     class MockPersistenceService: PersistenceServiceApi {
         var container: [String: Any] = [:]
 
-        func getString(forKey key: String) -> String? {
-            container[key] as? String
-        }
-
         func getBool(forKey key: String) -> Bool {
             container[key] as? Bool ?? false
-        }
-
-        func getArray(forKey key: String) -> [Any]? {
-            container[key] as? [Any]
-        }
-
-        func getDict(forKey key: String) -> [String: Any]? {
-            container[key] as? [String: Any]
         }
 
         func getData(forKey key: String) -> Data? {

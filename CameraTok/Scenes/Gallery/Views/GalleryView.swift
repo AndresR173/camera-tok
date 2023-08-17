@@ -59,7 +59,7 @@ extension GalleryView {
                 Spacer()
                 Text(isDatePickerVisible ? LocalizedStringKey("done") : LocalizedStringKey("filter"))
                     .font(.app(.medium, size: 18))
-                    .foregroundColor(.white)
+                    .foregroundColor(isDatePickerVisible ? Color("TextColor") : .white)
                     .onTapGesture {
                         withAnimation(.easeIn) {
                             isDatePickerVisible.toggle()

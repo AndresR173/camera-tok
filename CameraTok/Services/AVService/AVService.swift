@@ -38,7 +38,7 @@ final class AVService: AVServiceAPI {
                     self?.avDelegate?.updateVolume(to: newValue)
                 }
         } catch {
-
+            debugPrint(error.localizedDescription)
         }
     }
 
@@ -46,7 +46,7 @@ final class AVService: AVServiceAPI {
         do {
             try audioSession.setActive(false)
         } catch {
-
+            debugPrint(error.localizedDescription)
         }
     }
 

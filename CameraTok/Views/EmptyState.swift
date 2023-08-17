@@ -25,7 +25,9 @@ struct EmptyState: View {
     var body: some View {
         VStack {
             LottieView(lottieFile: emptyState.animation)
-                .frame(height: 300)
+                .aspectRatio(contentMode: .fit)
+                .frame(height: 200)
+            VSpacer(32)
             Text(emptyState.caption)
                 .font(.app(.bold, size: 14))
                 .tag(0)
@@ -40,7 +42,7 @@ struct EmptyState: View {
 
 struct EmptyState_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyState(emptyState: .empty, ctaTitle: "Go to settings") {
+        EmptyState(emptyState: .permissions, ctaTitle: "Go to settings") {
 
         }
     }
