@@ -20,7 +20,6 @@ enum GalleryServiceDependencyKey: DependencyKey {
 
         var authorizationStatus: GalleryAuthorizationStatus = .authorized
         var error: Error? = nil
-        var validateAuthorizationCalled = false
         var requestAuhtorizationCalled = false
 
         let metadata = VideoAsset.Metadata(
@@ -40,10 +39,6 @@ enum GalleryServiceDependencyKey: DependencyKey {
 
         func requestAuthorization() async {
             requestAuhtorizationCalled = true
-        }
-
-        func validateAuthorizationStatus() async {
-            validateAuthorizationCalled = true
         }
     }
 }

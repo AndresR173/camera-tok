@@ -25,10 +25,21 @@ struct GalleryView: View {
             galleryView
         case .loading:
             ProgressView()
-        case .error(let error):
-            Text(error)
+        case .error(let state):
+            if state == .permissions {
+                EmptyState(
+                    emptyState: .permissions,
+                    ctaTitle: NSLocalizedString("cta.go_to_settings", comment: "")
+                ) {
+                    guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+                    UIApplication.shared.open(url)
+                }
+            } else {
+                EmptyState(emptyState: state)
+            }
+
         case .empty:
-            Text("empty")
+            EmptyState(emptyState: .empty)
         }
     }
 }

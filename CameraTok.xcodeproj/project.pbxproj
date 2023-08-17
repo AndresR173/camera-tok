@@ -15,6 +15,11 @@
 		3407661B2A8D4E5A00160359 /* VideoMetadataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3407661A2A8D4E5A00160359 /* VideoMetadataView.swift */; };
 		3407661D2A8D53C600160359 /* VSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3407661C2A8D53C600160359 /* VSpacer.swift */; };
 		3407661F2A8D583300160359 /* AVPlayerGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3407661E2A8D583300160359 /* AVPlayerGenerator.swift */; };
+		340766212A8DA1C400160359 /* error_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 340766202A8DA1C400160359 /* error_animation.json */; };
+		340766232A8DA1EC00160359 /* empty_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 340766222A8DA1EC00160359 /* empty_animation.json */; };
+		340766252A8DA2FF00160359 /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340766242A8DA2FF00160359 /* EmptyState.swift */; };
+		340766272A8DA32100160359 /* EmptyStates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340766262A8DA32100160359 /* EmptyStates.swift */; };
+		340766292A8DA42D00160359 /* permissions_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 340766282A8DA42D00160359 /* permissions_animation.json */; };
 		340BE1802A896895005C0976 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE17F2A896895005C0976 /* OnboardingView.swift */; };
 		340BE1842A8968CB005C0976 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE1832A8968CB005C0976 /* PersistenceService.swift */; };
 		340BE18A2A896F70005C0976 /* CameraTokAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340BE1892A896F70005C0976 /* CameraTokAppViewModel.swift */; };
@@ -78,6 +83,11 @@
 		3407661A2A8D4E5A00160359 /* VideoMetadataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMetadataView.swift; sourceTree = "<group>"; };
 		3407661C2A8D53C600160359 /* VSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VSpacer.swift; sourceTree = "<group>"; };
 		3407661E2A8D583300160359 /* AVPlayerGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerGenerator.swift; sourceTree = "<group>"; };
+		340766202A8DA1C400160359 /* error_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = error_animation.json; sourceTree = "<group>"; };
+		340766222A8DA1EC00160359 /* empty_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty_animation.json; sourceTree = "<group>"; };
+		340766242A8DA2FF00160359 /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
+		340766262A8DA32100160359 /* EmptyStates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStates.swift; sourceTree = "<group>"; };
+		340766282A8DA42D00160359 /* permissions_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = permissions_animation.json; sourceTree = "<group>"; };
 		340BE17F2A896895005C0976 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		340BE1832A8968CB005C0976 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		340BE1892A896F70005C0976 /* CameraTokAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTokAppViewModel.swift; sourceTree = "<group>"; };
@@ -181,6 +191,7 @@
 				3401C4D42A8A9DC90014D7C5 /* GalleryAuthorizationStatus.swift */,
 				3401C4D22A8A9DA20014D7C5 /* SceneStatus.swift */,
 				34F7766E2A8AE8A5004AEBCF /* VideoAsset.swift */,
+				340766262A8DA32100160359 /* EmptyStates.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -322,6 +333,7 @@
 				34B76EC32A899EAC00AB4035 /* PrimaryButton.swift */,
 				3415E6D12A8C44C200B25A09 /* LikeButton.swift */,
 				3407661C2A8D53C600160359 /* VSpacer.swift */,
+				340766242A8DA2FF00160359 /* EmptyState.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -342,7 +354,10 @@
 		34B76EB62A899C6800AB4035 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				340766222A8DA1EC00160359 /* empty_animation.json */,
+				340766202A8DA1C400160359 /* error_animation.json */,
 				34B76EB72A899C7900AB4035 /* camera_animation.json */,
+				340766282A8DA42D00160359 /* permissions_animation.json */,
 				34B76EBF2A899E1500AB4035 /* gallery_animation.json */,
 			);
 			path = Animations;
@@ -475,10 +490,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				340766292A8DA42D00160359 /* permissions_animation.json in Resources */,
 				34B76EB52A899C1900AB4035 /* Manrope-Regular.ttf in Resources */,
+				340766212A8DA1C400160359 /* error_animation.json in Resources */,
 				34B76EB12A899C1900AB4035 /* Manrope-SemiBold.ttf in Resources */,
 				34B76EB02A899C1900AB4035 /* Manrope-Bold.ttf in Resources */,
 				3426BD262A894B5E00FB3B68 /* Preview Assets.xcassets in Resources */,
+				340766232A8DA1EC00160359 /* empty_animation.json in Resources */,
 				34B76EB42A899C1900AB4035 /* Manrope-Medium.ttf in Resources */,
 				34B76EC02A899E1500AB4035 /* gallery_animation.json in Resources */,
 				34B76EB82A899C7900AB4035 /* camera_animation.json in Resources */,
@@ -525,6 +543,7 @@
 				3407661F2A8D583300160359 /* AVPlayerGenerator.swift in Sources */,
 				340BE1842A8968CB005C0976 /* PersistenceService.swift in Sources */,
 				3407661D2A8D53C600160359 /* VSpacer.swift in Sources */,
+				340766252A8DA2FF00160359 /* EmptyState.swift in Sources */,
 				34B76EBA2A899C9300AB4035 /* IntroOboardingView.swift in Sources */,
 				34B76EC92A89A65800AB4035 /* GalleryService.swift in Sources */,
 				3401C4D02A8A8A570014D7C5 /* ThumbnailView.swift in Sources */,
@@ -533,6 +552,7 @@
 				3401C4CE2A8A6EC60014D7C5 /* GalleryViewModel.swift in Sources */,
 				340BE18F2A89714A005C0976 /* PersistenceService+Dependencies.swift in Sources */,
 				34933CC02A8BFA8C00F4054A /* ControlButton.swift in Sources */,
+				340766272A8DA32100160359 /* EmptyStates.swift in Sources */,
 				34E830BE2A8BD0B300168A51 /* CustomSlider.swift in Sources */,
 				3441DD092A8AE36C009A33AE /* VideoFeedView.swift in Sources */,
 				3426BD1F2A894B5C00FB3B68 /* CameraTokApp.swift in Sources */,

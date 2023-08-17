@@ -18,9 +18,6 @@ final class GalleryViewModel: ObservableObject {
     private var canLoadMore = true
 
     func refreshGallery() async {
-        if await galleryService.authorizationStatus == .notDetermined {
-            await galleryService.validateAuthorizationStatus()
-        }
         do {
             let videos = try await galleryService.fetchVideos(from: filterDate)
             canLoadMore = videos.count >= 15
@@ -31,9 +28,16 @@ final class GalleryViewModel: ObservableObject {
             viewStatus = self.videos.isEmpty ? .empty : .loaded
         } catch {
             if let error = error as? GalleryServiceError {
-                viewStatus = .error(error.localizedDescription)
+                switch error {
+                case .assetNotFound:
+                    viewStatus = .error(.empty)
+                case .permissionsRequired:
+                    viewStatus = .error(.permissions)
+                case .generic:
+                    viewStatus = .error(.error)
+                }
             } else {
-                viewStatus = .error(NSLocalizedString("error.generic", comment: ""))
+                viewStatus = .error(.error)
             }
         }
     }

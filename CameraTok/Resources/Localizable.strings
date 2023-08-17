@@ -9,6 +9,7 @@
 "onboarding.intro" = "Step into the Past, Relive the Present: Unveil Your Memories Through Time with CameraTok.";
 "onboarding.gallery" = "Unlock Your Memories: Grant Us Access to Your Gallery and Step into a World of Timeless Stories.";
 "onboarding.grant_access" = "Grant Access";
-"error.generic" = "Something went wrong, please try again";
-"error.asset_not_found" = "We can't load your video";
-"error.permissions_required" = "We need access to you gallery";
+"error.generic" = "Uh-oh, Gremlins at Work: An error has occurred. Our digital artisans are on the case to fix things. Kindly bear with us.";
+"error.assets_not_found" = "Blank Canvas of Time: Fill it with Your Stories. Dive into Your Gallery to Begin Crafting Your Chronological Journey with CameraTok.";
+"error.permissions_required" = "Capture the Moments that Matter – Please Grant CameraTok Access to Your Gallery. Relive Memories and Customize Your Journey Through Time.";
+"cta.go_to_settings" = "Go to settings";

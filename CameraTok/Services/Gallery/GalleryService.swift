@@ -30,7 +30,6 @@ protocol GalleryServiceApi {
     var authorizationStatus: GalleryAuthorizationStatus { get async }
     func requestAuthorization() async
     func fetchVideos(from date: Date) async throws -> [VideoAsset]
-    func validateAuthorizationStatus() async
 }
 
 @MainActor
@@ -64,12 +63,13 @@ final class GalleryService: GalleryServiceApi {
         }
     }
 
-    func validateAuthorizationStatus() async {
-        phAuthorizationStatus = PHPhotoLibrary.authorizationStatus(for: .addOnly)
+    func validateAuthorizationStatus() async -> PHAuthorizationStatus {
+        phAuthorizationStatus = PHPhotoLibrary.authorizationStatus(for: .readWrite)
+        return phAuthorizationStatus
     }
 
     func fetchVideos(from date: Date)  async throws -> [VideoAsset] {
-        switch await authorizationStatus {
+        switch await validateAuthorizationStatus() {
         case .authorized, .limited:
             let fetchOptions = PHFetchOptions()
             fetchOptions.includeHiddenAssets = false

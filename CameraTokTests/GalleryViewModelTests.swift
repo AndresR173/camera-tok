@@ -35,12 +35,12 @@ extension GalleryViewModelTests {
         })
 
         await sut.refreshGallery()
-        XCTAssertEqual(sut.viewStatus, .error(NSLocalizedString("error.asset_not_found", comment: "")))
+        XCTAssertEqual(sut.viewStatus, .error(.empty))
 
         mockGalleryService.error = NSError(domain: "", code: 0)
 
         await sut.refreshGallery()
-        XCTAssertEqual(sut.viewStatus, .error(NSLocalizedString("error.generic", comment: "")))
+        XCTAssertEqual(sut.viewStatus, .error(.error))
     }
 
     func testGalleryServiceSuccess() async throws {
@@ -63,7 +63,6 @@ extension GalleryViewModelTests {
         }
         await sut.refreshGallery()
 
-        XCTAssertTrue(mockGalleryService.validateAuthorizationCalled)
         XCTAssertEqual(sut.viewStatus, .empty)
     }
 }
